@@ -76,11 +76,11 @@ function a = findWakeFreeConditions(Data, varargin)
 
   %% Check Validity of optional parameters
   if ~(isreal(options.MinimumPower) && isscalar(options.MinimumPower))
-    error('Expected MinimumPower to be a real numeric scalar');
+      error('Expected MinimumPower to be a real numeric scalar');
   end
 
   if ~(isreal(options.WindDirectionBinSize) && isscalar(options.WindDirectionBinSize))
-    error('Expected WindDirectionBinSize to be a real numeric scalar');
+      error('Expected WindDirectionBinSize to be a real numeric scalar');
   end
 
   % Check Validity of Data structure members
