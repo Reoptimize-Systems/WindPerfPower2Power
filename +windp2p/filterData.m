@@ -51,7 +51,7 @@ function filtered_data = filterData (data, varargin)
     options.PowerRangeNumSamplesThresh = 1000;
 
 
-    options = parse_pv_pairs (options, varargin);
+    options = windp2p.parse_pv_pairs (options, varargin);
 
     % TODO: need input validation here
 
