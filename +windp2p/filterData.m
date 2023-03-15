@@ -231,7 +231,7 @@ function filtered_data = filterData (data, varargin)
     % In Testing Period: use only wind direction ranges and power ranges
     % also covered by Training Period
 
-   WindDirectionNumSamplesThresh % make histogram of nacelle direction ranges for both turbine training
+    % make histogram of nacelle direction ranges for both turbine training
     % (pre) data sets
     nacelle_direction_edges = linspace(0, 360, options.WindDirectionThreshNBins);
 
