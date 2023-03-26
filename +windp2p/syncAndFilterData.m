@@ -1,6 +1,15 @@
-function filtered_data = filterData (data, varargin)
-
-
+function filtered_data = syncAndfilterData (data, varargin)
+% syncronises and filters SCADA for power to power comparison
+%
+% Syntax
+%
+% filtered_data = filterData (data)
+% filtered_data = filterData (data, varargin)
+%
+% Description
+%
+% 
+%
 % Input
 %
 %  Data - Nested structure containing the following fields:
