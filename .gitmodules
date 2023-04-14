@@ -1,0 +1,3 @@
+[submodule "matlab-octave-input-checking"]
+	path = matlab-octave-input-checking
+	url = https://github.com/Reoptimize-Systems/matlab-octave-input-checking.git
