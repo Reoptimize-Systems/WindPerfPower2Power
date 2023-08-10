@@ -55,7 +55,7 @@ data.TestWTPost.DirectionNacelle = zeros (size (data.TestWTPost.Time));
 
 %% 
 
-filtered_data = windp2p.filterData (data, 'WindDirectionNumSamplesThresh', 20);
+filtered_data = windp2p.syncAndFilterData (data, 'WindDirectionNumSamplesThresh', 20);
 
 scatter ( data.ControlWTPre.Time, data.ControlWTPre.RPM, ...
           filtered_data.ControlWTPre.Time, filtered_data.ControlWTPre.RPM);
