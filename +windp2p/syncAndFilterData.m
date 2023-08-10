@@ -244,15 +244,15 @@ function filtered_data = syncAndfilterData (data, varargin)
     % (pre) data sets
     nacelle_direction_edges = linspace(0, 360, options.WindDirectionThreshNBins);
 
-    [N_samples_ControlWTPre, nacelle_direction_edges] = ...
+    [N_samples_ControlPre_WDirectionNacelle, nacelle_direction_edges] = ...
         histcounts(filtered_data.ControlWTPre.DirectionNacelle, nacelle_direction_edges);
 
-    N_samples_TestWTPre = histcounts(filtered_data.TestWTPre.DirectionNacelle, nacelle_direction_edges);
+    N_samples_TestWTPre_WDirectionNacelle = histcounts(filtered_data.TestWTPre.DirectionNacelle, nacelle_direction_edges);
 
     % find wind directions where number of samples are greater a minimum
     % threshold of samples
-    good_directions = N_samples_ControlWDirectionNacelleTPre >= options.WindDirectionNumSamplesThresh ...
-                        & N_samples_TestWTPre >= options.WindDirectionNumSamplesThresh;
+    good_directions = N_samples_ControlPre_WDirectionNacelle >= options.WindDirectionNumSamplesThresh ...
+                        & N_samples_TestWTPre_WDirectionNacelle >= options.WindDirectionNumSamplesThresh;
 
 
     % keep only data with these wind directions from all four data sets
