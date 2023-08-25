@@ -63,6 +63,7 @@ options.PowerRangeNumSamplesThresh = 45; %5 % (very low bc sample small at the m
 options.DataGapInfillThreshold = 5; % TBC, but I think that: This is the time between consecutive samples which is too big (anything smaller is OK)
 options.SyncronisedTimeStepSize = 1; % TBC
 options.TestTurbineTimeShift = 0; % manual shifting of time series
+options.OperationalPowerThreshold = 1e-4; % New variable to remove all P=0s 
 options.Troubleshooting = 0; % 1=plot sync filter only; 2=plot sync and op filter; ...
 
 options = windp2p.parse_pv_pairs (options, varargin);
@@ -149,6 +150,35 @@ switch options.OperationalFilterMethod
         error ('Unrecognised OperationalFilterMethod: ''%s''', options.OperationalFilterMethod);
 
 end
+
+
+
+
+
+%%%%%%%%%% New addition, remove all tiny powers, to tidy up speed-power and
+%%%%%%%%%% wind speed-power curves
+
+% NOTE: unintended consequence is the removal of lots of lower RPM values
+
+bad_inds = find(abs(filtered_data.ControlWTPre.PowerActive) < options.OperationalPowerThreshold);
+filtered_data.ControlWTPre =  strip_data_bad_inds_all_fields (filtered_data.ControlWTPre, bad_inds);
+filtered_data.TestWTPre = strip_data_bad_inds_all_fields (filtered_data.TestWTPre, bad_inds);
+
+bad_inds = find(abs(filtered_data.ControlWTPost.PowerActive) < options.OperationalPowerThreshold);
+filtered_data.ControlWTPost = strip_data_bad_inds_all_fields (filtered_data.ControlWTPost, bad_inds);
+filtered_data.TestWTPost = strip_data_bad_inds_all_fields (filtered_data.TestWTPost, bad_inds);
+
+bad_inds = find(abs(filtered_data.TestWTPre.PowerActive) < options.OperationalPowerThreshold);
+filtered_data.TestWTPre = strip_data_bad_inds_all_fields (filtered_data.TestWTPre, bad_inds);
+filtered_data.ControlWTPre =  strip_data_bad_inds_all_fields (filtered_data.ControlWTPre, bad_inds);
+
+bad_inds = find(abs(filtered_data.TestWTPost.PowerActive) < options.OperationalPowerThreshold);
+filtered_data.TestWTPost = strip_data_bad_inds_all_fields (filtered_data.TestWTPost, bad_inds);
+filtered_data.ControlWTPost = strip_data_bad_inds_all_fields (filtered_data.ControlWTPost, bad_inds);
+
+%%%%%%%%%% New addition end
+
+
 
 if options.Troubleshooting == 2
     [~] = plot200(data,filtered_data);
