@@ -432,66 +432,63 @@ linkaxes([ax2 ax4 ax6 ax8 ax10],'x')
 
 sgtitle 'Comparing Control and Test turbines '
 
-%% Consistency of Turbine Settings
 
 
+%% Northing (pre filter, for info)
 
 
-%% Northing
-
-
-degree_separation_per_bin = 4;% degrees
-No_threshold_direction = 360/degree_separation_per_bin+1;
-nacelle_direction_edges = linspace(0, 360, No_threshold_direction);
-
-dev1 = data.TestWTPre.DirectionNacelle;
-dev2 = data.ControlWTPre.DirectionNacelle;
-
-deviation_raw = wrapTo180(dev1-dev2);
-
-for k=1:(length(nacelle_direction_edges)-1)
-    idx_ControlWTPre_WindDir{k}=find((data.ControlWTPre.DirectionNacelle>=nacelle_direction_edges(k)) & (data.ControlWTPre.DirectionNacelle<=nacelle_direction_edges(k+1)));
-    idx_TestWTPre_WindDir{k}=find((data.TestWTPre.DirectionNacelle>=nacelle_direction_edges(k)) & (data.TestWTPre.DirectionNacelle<=nacelle_direction_edges(k+1)));
-    
-    Pow_binned_ControlWTpre(k) = mean(data.ControlWTPre.PowerActive(idx_ControlWTPre_WindDir{k}));
-    Pow_binned_TestWTpre(k) = mean(data.TestWTPre.PowerActive(idx_TestWTPre_WindDir{k}));
-
-    U_binned_ControlWTpre(k) = mean(data.ControlWTPre.WindSpeed(idx_ControlWTPre_WindDir{k}));
-    U_binned_TestWTpre(k) = mean(data.TestWTPre.WindSpeed(idx_TestWTPre_WindDir{k}));
-
-    deviation(k) = mean(deviation_raw(idx_TestWTPre_WindDir{k}));
-end
-
-midpoint = 0.5*((nacelle_direction_edges(1:(No_threshold_direction-1)))+(nacelle_direction_edges(2:(No_threshold_direction))));
-
-% % % CLEARLY SOME OF THIS MEASUREMENTS MUST BE MADE WITH BINNED DATAPOINTS
-figure(4)
-ax1=subplot(1,2,1);
-% plot(data.ControlWTPre.DirectionNacelle,(data.ControlWTPre.PowerActive./data.TestWTPre.PowerActive),'sqr')
-plot(midpoint,Pow_binned_ControlWTpre./Pow_binned_TestWTpre,'-sqr')
-hold on
-% plot(data.ControlWTPre.DirectionNacelle,(data.ControlWTPre.WindSpeed./data.TestWTPre.WindSpeed),'ob')
-plot(midpoint,U_binned_ControlWTpre./U_binned_TestWTpre,'-ob')
-hold off
-grid on
-ylabel 'P(control)/P(test), v(control)/v(test)'
-% ylim([-0.5 14])
-xlabel 'Nacelle Pos [^{\circ}]'
-%
-ax2=subplot(1,2,2);
-yyaxis left
-plot(data.TestWTPre.DirectionNacelle,data.ControlWTPre.DirectionNacelle,'xb')
-ylim([0 360])
-ylabel 'Nacelle Pos Control WT [^{\circ}]'
-yyaxis right
-% plot(data.TestWTPre.DirectionNacelle,(data.TestWTPre.DirectionNacelle-data.ControlWTPre.DirectionNacelle),'xr')
-plot(midpoint,deviation,'-r')
-ylim([-30 30]+30)
-ylabel 'deviation [^{\circ}]'
-grid on
-xlabel 'Nacelle Pos Test WT [^{\circ}]'
-sgtitle 'Northing (tbc)'
-xlim([0 360])
+% degree_separation_per_bin = 4;% degrees
+% No_threshold_direction = 360/degree_separation_per_bin+1;
+% nacelle_direction_edges = linspace(0, 360, No_threshold_direction);
+% 
+% dev1 = data.TestWTPre.DirectionNacelle;
+% dev2 = data.ControlWTPre.DirectionNacelle;
+% 
+% deviation_raw = wrapTo180(dev1-dev2);
+% 
+% for k=1:(length(nacelle_direction_edges)-1)
+%     idx_ControlWTPre_WindDir{k}=find((data.ControlWTPre.DirectionNacelle>=nacelle_direction_edges(k)) & (data.ControlWTPre.DirectionNacelle<=nacelle_direction_edges(k+1)));
+%     idx_TestWTPre_WindDir{k}=find((data.TestWTPre.DirectionNacelle>=nacelle_direction_edges(k)) & (data.TestWTPre.DirectionNacelle<=nacelle_direction_edges(k+1)));
+% 
+%     Pow_binned_ControlWTpre(k) = mean(data.ControlWTPre.PowerActive(idx_ControlWTPre_WindDir{k}));
+%     Pow_binned_TestWTpre(k) = mean(data.TestWTPre.PowerActive(idx_TestWTPre_WindDir{k}));
+% 
+%     U_binned_ControlWTpre(k) = mean(data.ControlWTPre.WindSpeed(idx_ControlWTPre_WindDir{k}));
+%     U_binned_TestWTpre(k) = mean(data.TestWTPre.WindSpeed(idx_TestWTPre_WindDir{k}));
+% 
+%     deviation(k) = mean(deviation_raw(idx_TestWTPre_WindDir{k}));
+% end
+% 
+% midpoint = 0.5*((nacelle_direction_edges(1:(No_threshold_direction-1)))+(nacelle_direction_edges(2:(No_threshold_direction))));
+% 
+% % % % CLEARLY SOME OF THIS MEASUREMENTS MUST BE MADE WITH BINNED DATAPOINTS
+% figure(4)
+% ax1=subplot(1,2,1);
+% % plot(data.ControlWTPre.DirectionNacelle,(data.ControlWTPre.PowerActive./data.TestWTPre.PowerActive),'sqr')
+% plot(midpoint,Pow_binned_ControlWTpre./Pow_binned_TestWTpre,'-sqr')
+% hold on
+% % plot(data.ControlWTPre.DirectionNacelle,(data.ControlWTPre.WindSpeed./data.TestWTPre.WindSpeed),'ob')
+% plot(midpoint,U_binned_ControlWTpre./U_binned_TestWTpre,'-ob')
+% hold off
+% grid on
+% ylabel 'P(control)/P(test), v(control)/v(test)'
+% % ylim([-0.5 14])
+% xlabel 'Nacelle Pos [^{\circ}]'
+% %
+% ax2=subplot(1,2,2);
+% yyaxis left
+% plot(data.TestWTPre.DirectionNacelle,data.ControlWTPre.DirectionNacelle,'xb')
+% ylim([0 360])
+% ylabel 'Nacelle Pos Control WT [^{\circ}]'
+% yyaxis right
+% % plot(data.TestWTPre.DirectionNacelle,(data.TestWTPre.DirectionNacelle-data.ControlWTPre.DirectionNacelle),'xr')
+% plot(midpoint,deviation,'-r')
+% ylim([-30 30]+30)
+% ylabel 'deviation [^{\circ}]'
+% grid on
+% xlabel 'Nacelle Pos Test WT [^{\circ}]'
+% sgtitle 'Northing (tbc)'
+% xlim([0 360])
 
 %% Run sync and filter function
 
@@ -535,6 +532,23 @@ elseif SELECT_DATA == 'Lisse'
 end
 
 % Plot results (unfiltered and filtered)
+
+figure(13)
+subplot(2,1,1)
+plot(filtered_data.ControlWTPre.WindSpeed,filtered_data.ControlWTPre.PowerActive,'.')
+grid on
+xlabel 'Wind Speed [m/s]'
+ylabel 'Power [W]'
+title 'U to P (whole filtered dataset)'
+subplot(2,1,2)
+plot(filtered_data.ControlWTPre.RPM,filtered_data.ControlWTPre.PowerActive,'.')
+grid on
+xlabel 'RPM'
+ylabel 'Power [W]'
+title 'RPM to P (whole filtered dataset)'
+sgtitle 'Control WT (pre)'
+
+
 
 
 
@@ -696,10 +710,7 @@ linkaxes([ax1 ax2 ax5 ax6 ax9 ax10 ax13 ax14],'x')
 
 linkaxes([ax3 ax4 ax7 ax8 ax11 ax12 ax15 ax16],'x')
 
-
-
-
-%%  Northing filtered data
+%% Aligning the indexing of the "filtered" data for both WTs
 
 % Finding values that are sampled at the same time for both turbines
 [filtered_data_new.TestWTPre.Time,filtered_data_new.TestWTPre.idx]=intersect(filtered_data.TestWTPre.Time,filtered_data.ControlWTPre.Time);
@@ -738,6 +749,64 @@ filtered_data_new.TestWTPre.WindDirection = filtered_data.TestWTPre.WindDirectio
 
 DateTimeTestWTPreNew=datetime(1970,1,1,0,0,filtered_data_new.TestWTPre.Time);
 DateTimeControlWTPre_New=datetime(1970,1,1,0,0,filtered_data_new.ControlWTPre.Time);
+
+%% Consistency of Turbine Settings
+
+
+figure(202)
+subplot(2,1,1)
+plot(filtered_data_new.ControlWTPre.PowerActive,filtered_data_new.ControlWTPre.RPM,'.r')
+hold on
+plot(filtered_data.ControlWTPost.PowerActive,filtered_data.ControlWTPost.RPM,'.b')
+hold off
+grid on
+xlabel 'Power [kW]'
+ylabel 'RPM'
+title Speed
+ylim([600 1300])
+legend 'Pre' 'Post' location southeast
+subplot(2,1,2)
+plot(filtered_data_new.ControlWTPre.PowerActive,filtered_data_new.ControlWTPre.PitchAngleA,'.r')
+hold on
+plot(filtered_data.ControlWTPost.PowerActive,filtered_data.ControlWTPost.PitchAngleA,'.b')
+hold off
+grid on
+xlabel 'Power [kW]'
+ylabel 'RPM'
+title Pitch
+ylim([-1 20])
+sgtitle 'Control WT'
+
+figure(203)
+subplot(2,1,1)
+plot(filtered_data_new.TestWTPre.PowerActive,filtered_data_new.TestWTPre.RPM,'.r')
+hold on
+plot(filtered_data.TestWTPost.PowerActive,filtered_data.TestWTPost.RPM,'.b')
+hold off
+grid on
+xlabel 'Power [kW]'
+ylabel 'RPM'
+title Speed
+ylim([600 1300])
+legend 'Pre' 'Post' location southeast
+subplot(2,1,2)
+plot(filtered_data_new.TestWTPre.PowerActive,filtered_data_new.TestWTPre.PitchAngleA,'.r')
+hold on
+plot(filtered_data.TestWTPost.PowerActive,filtered_data.TestWTPost.PitchAngleA,'.b')
+hold off
+grid on
+xlabel 'Power [kW]'
+ylabel 'RPM'
+title Pitch
+ylim([-1 20])
+sgtitle 'Test WT'
+
+
+% Possibility to use these plots to clean up some more...?
+
+
+%%  Northing filtered data
+
 
 
 degree_separation_per_bin = 4;% degrees
@@ -831,7 +900,7 @@ ylim([-40 40])
 ylabel 'deviation [^{\circ}]'
 grid on
 xlabel 'Nacelle Pos Test WT [^{\circ}]'
-sgtitle 'Northing with filtered data (tbc)'
+sgtitle 'Northing with filtered data'
 xlim([0 360])
 
 %% Wind Direction versus Active Power
@@ -864,8 +933,8 @@ legend Column1Test 'Column1Test-AverageError' Column2Control Error
 title 'Error in Wind Direction between two WTs'
 
 filtered_data_new.ControlWTPre.WindDirectionCorrected = wrapTo360(filtered_data_new.ControlWTPre.WindDirection...
-    + Average_error_wind_sum); % Wind Direction Error
-    ...+ Average_error_sum); % Nacelle Position Error
+    ... + Average_error_wind_sum); % Wind Direction Error
+    + Average_error_sum); % Nacelle Position Error
 
 % % % % % % % % % % Correcting Nacelle Direction Error End % % % % % % % %
 
@@ -990,7 +1059,7 @@ for k=1:(length(nacelle_pos_edges)-1)
 
     idx_ControlWTPre_NacPos{k}=find((filtered_data_new.ControlWTPre.DirectionNacelleCorrected>=nacelle_pos_edges(k)) & (filtered_data_new.ControlWTPre.DirectionNacelleCorrected<=nacelle_pos_edges(k+1)));
     
-    % figure(11)
+    % figure(1100)
     % plot(DateTimeControlWTPre_New(idx_ControlWTPre_NacPos{k}),filtered_data_new.ControlWTPre.DirectionNacelleCorrected(idx_ControlWTPre_NacPos{k}),'.')
     % grid on
     % str = sprintf('Nacelle Dir bin from %d to %d ', nacelle_pos_edges(k), nacelle_pos_edges(k+1));
@@ -1008,7 +1077,7 @@ for k=1:(length(nacelle_pos_edges)-1)
         end
 
 
-        % figure(12)
+        % figure(1200)
         % plot(DateTimeControlWTPre_New(idx_ControlWTPre_Power{n,k}),filtered_data_new.ControlWTPre.PowerActive(idx_ControlWTPre_Power{n,k}),'.')
         % grid on
         % str = sprintf('Power bin from %d to %d ', power_edges(n), power_edges(n+1));
@@ -1018,21 +1087,21 @@ for k=1:(length(nacelle_pos_edges)-1)
 
 end
 
-%% Testing results
+%% Testing results (choose row and column)
 
-clc
-row=6;% power bins
-column=20;% nacelle direction bins
-
-Ptest=filtered_data_new.ControlWTPre.PowerActive...
-    (idx_ControlWTPre_Power{row,column});
-
-PTEST = [min(Ptest) max(Ptest)]
-
-DirNactest=filtered_data_new.ControlWTPre.DirectionNacelleCorrected...
-    (idx_ControlWTPre_Power{row,column});
-
-DNTEST = [min(DirNactest) max(DirNactest)]
+% clc
+% row=6;% power bins
+% column=20;% nacelle direction bins
+% 
+% Ptest=filtered_data_new.ControlWTPre.PowerActive...
+%     (idx_ControlWTPre_Power{row,column});
+% 
+% PTEST = [min(Ptest) max(Ptest)]
+% 
+% DirNactest=filtered_data_new.ControlWTPre.DirectionNacelleCorrected...
+%     (idx_ControlWTPre_Power{row,column});
+% 
+% DNTEST = [min(DirNactest) max(DirNactest)]
 
 %% Now plotting Power-to-power according to WindGuard
 
@@ -1056,19 +1125,22 @@ emptyCells = cellfun(@isempty,idx_ControlWTPre_Power);
 Column_Sum = sum(emptyCells);
 Columns_of_interest=find(Column_Sum==0);
 
+% Making line of best fit (ignore the above rated P bin)
+% for k=1:length(Columns_of_interest)
+%     x=PmeanControlWT(1:5,Columns_of_interest(k));
+%     y=PmeanTestWT(1:5,Columns_of_interest(k));
+% 
+%     coefficients = polyfit(x, y, 1);
+%     xFit = linspace(0, base_kW, 1000);
+%     yFit = polyval(coefficients , xFit);
+%     Coef{k}=coefficients;
+% end
 
-NDmeanControlWT(:,Columns_of_interest)
-NDmeanTestWT(:,Columns_of_interest(1))
-
-
+% Same but go through origin
 for k=1:length(Columns_of_interest)
-    x=PmeanControlWT(:,Columns_of_interest(k));
-    y=PmeanTestWT(:,Columns_of_interest(k));
-    
-    coefficients = polyfit(x, y, 1);
-    xFit = linspace(0, base_kW, 1000);
-    yFit = polyval(coefficients , xFit);
-    Coef{k}=coefficients;
+    x=PmeanControlWT(1:6,Columns_of_interest(k));
+    y=PmeanTestWT(1:6,Columns_of_interest(k));
+    c(k) = x\y;            
 end
 
 x_axis=[0 3000];
@@ -1080,27 +1152,191 @@ for column=2:length(Columns_of_interest)
     plot(PmeanControlWT(:,Columns_of_interest(column)),PmeanTestWT(:,Columns_of_interest(column)),'.')
 end
 set(gca,'ColorOrderIndex',1)
-plot(x_axis,( x_axis*Coef{1}(1)+Coef{1}(2) )       )
+% plot(x_axis,( x_axis*Coef{1}(1)+Coef{1}(2) )       )
+% for column=2:length(Columns_of_interest)
+%     plot(x_axis,( x_axis*Coef{column}(1)+Coef{column}(2) )       )
+% end
+plot(x_axis,( x_axis*c(1) )       )
 for column=2:length(Columns_of_interest)
-    plot(x_axis,( x_axis*Coef{column}(1)+Coef{column}(2) )       )
+    plot(x_axis,( x_axis*c(column) )       )
+    t=1;
 end
-legend 18 19 20 25 26 27 28 29 30 31 32 33
+legend 18 19 20 25 26 27 28 29 30 31 32 33 location northwest
 hold off
-grid on
+grid minor
 xlabel Pcontrol
 ylabel Ptest
 
-%% Plot power curve using control turbine pre and post data (ie training and testing data)
+%% Estimation of post mod test WT through Power to Power
+clc
+clear P_TestWT_estimated n idx_post_total P_TestWT_estimated_temp
 
-Prevailing_wind_column = 28; % ie 270 - 280 degrees
+DateTimeControlWTPost_new=datetime(1970,1,1,0,0,filtered_data.ControlWTPost.Time);
+DateTimeTestWTPost_new=datetime(1970,1,1,0,0,filtered_data.TestWTPost.Time);
+
+% part 1: bin the individual datapoints into the correct power directional bins
+
+for k=1:(length(nacelle_pos_edges)-1)
+
+    idx_ControlWTPost_NacPos{k}=find((filtered_data.ControlWTPost.DirectionNacelle+ Average_error_sum>=nacelle_pos_edges(k)) & (filtered_data.ControlWTPost.DirectionNacelle+ Average_error_sum<=nacelle_pos_edges(k+1)));
+    
+    % figure(1101)
+    % plot(DateTimeTestWTPost_new(idx_TestWTPost_NacPos{k}),filtered_data.TestWTPost.DirectionNacelle(idx_TestWTPost_NacPos{k}),'.')
+    % grid on
+    % str = sprintf('Nacelle Dir bin from %d to %d ', nacelle_pos_edges(k), nacelle_pos_edges(k+1));
+    % title(str)
+
+end
+
+
+% part 2: find estimated Ptest as a function of Pcontrol
+index_for_plotting=[];
+Pestimate_for_plotting=[];
+for k=1:length(Columns_of_interest)
+    n=Columns_of_interest(k);
+    P_TestWT_estimated{k} = c(k)*filtered_data.ControlWTPost.PowerActive(idx_ControlWTPost_NacPos{n});
+    index_for_plotting = [index_for_plotting idx_ControlWTPost_NacPos{n}];
+    Pestimate_for_plotting = [Pestimate_for_plotting P_TestWT_estimated{k}];
+end
+
+% part 3: superimose estimated Ptest with measured Ptest
+
+% rearrange by date to allow for time domain plotting
+idx_column1=index_for_plotting';
+Pest_column2=Pestimate_for_plotting';
+Table_Pest = table(idx_column1,Pest_column2);
+Table_Pest = sortrows(Table_Pest,'idx_column1');
+
+figure(15)
+ax1=subplot(3,1,1);
+plot(DateTimeControlWTPost_new,filtered_data.TestWTPost.PowerActive,'or')
+hold on
+plot(DateTimeControlWTPost_new,filtered_data.ControlWTPost.PowerActive,'.k')
+hold off
+grid minor
+ylabel 'Power [kW]'
+legend 'Test WT (actual)' 'Control WT (actual)'
+ax2=subplot(3,1,2);
+plot(DateTimeTestWTPost_new,filtered_data.TestWTPost.PowerActive,'or')
+hold on
+% plot(filtered_data.ControlWTPost.Time(Table_Pest.idx_column1),Pest_column2,'ob')
+plot(DateTimeControlWTPost_new(idx_ControlWTPost_NacPos{Columns_of_interest(1)}),P_TestWT_estimated{1},'.b')
+for n=2:length(Columns_of_interest)
+    plot(DateTimeControlWTPost_new(idx_ControlWTPost_NacPos{Columns_of_interest(n)}),P_TestWT_estimated{n},'.b')
+end
+hold off
+grid minor
+ylabel 'Power [kW]'
+legend 'Test WT (actual)' 'Estimated based on Control WT'
+
+
+ax3=subplot(3,1,3);
+plot(DateTimeControlWTPost_new(idx_ControlWTPost_NacPos{Columns_of_interest(1)}),filtered_data.ControlWTPost.DirectionNacelle(idx_ControlWTPost_NacPos{Columns_of_interest(1)}),'.b')
+hold on
+for n=2:length(Columns_of_interest)
+    plot(DateTimeControlWTPost_new(idx_ControlWTPost_NacPos{Columns_of_interest(n)}),filtered_data.ControlWTPost.DirectionNacelle(idx_ControlWTPost_NacPos{Columns_of_interest(n)}),'.b')
+end
+for k=1:(length(nacelle_pos_edges))
+    plot([DateTimeControlWTPost_new(1) DateTimeControlWTPost_new(end)],[nacelle_pos_edges(k) nacelle_pos_edges(k)],'m')
+end
+legend 'Nacelle Position of control WT'
+hold off
+grid minor
+xlabel 'Time'
+ylabel 'Nacelle Direction [deg]'
+linkaxes([ax1 ax2 ax3],'x')
+linkaxes([ax1 ax2],'y')
 
 
 
 
 
+%% Trying to understand wind curves etc
+
+for column=1:(length(nacelle_pos_edges)-1)% nacelle direction bins
+
+    for row=1:(length(power_edges)-1)% power bins
+
+    % WindSpControlWT{row,column}=(filtered_data_new.ControlWTPre.WindSpeed(idx_ControlWTPre_Power{row,column}));
+    WindSpMeanControlWT(row,column)=mean(filtered_data_new.ControlWTPre.WindSpeed(idx_ControlWTPre_Power{row,column}));
+
+    end
+
+end
+
+v_rated=13.5;
+
+figure(14)
+plot(WindSpMeanControlWT(:,Columns_of_interest(1))/v_rated,PmeanControlWT(:,Columns_of_interest(1))/base_kW,'.-')
+hold on
+for column=2:length(Columns_of_interest)
+plot(WindSpMeanControlWT(:,Columns_of_interest(column))/v_rated,PmeanControlWT(:,Columns_of_interest(column))/base_kW,'.-')
+end
+hold off
+grid on
+xlabel v/vrated
+ylabel P/Prated
+title 'Using mean values only'
+
+%% Plot power curve using as a function of wind direction bin
+
+% Step 1: choose wind direction bin according to nacelle position
+for k=1:length(Columns_of_interest)
+    n=Columns_of_interest(k); % ie 270 - 280 degrees
+    
+    % Step 2: Reproduce power output of test turbine for relevant direction bin.
+    P_TestWT_estimated{k} = c(k)*filtered_data.ControlWTPost.PowerActive(idx_ControlWTPost_NacPos{n});
+    
+    % Step 3: calculate wind speed at test turbine by piecewise linear fit
+    % of power curve
+
+    y=filtered_data.ControlWTPost.WindSpeed(idx_ControlWTPost_NacPos{n})';
+    x=P_TestWT_estimated{k}';
+    % c_vt(k) = x\y;
+
+    coefficients = polyfit(x, y, 1);
+    xFit = linspace(0, base_kW, 1000);
+    yFit = polyval(coefficients , xFit);
+    Coef_vt{k}=coefficients;
+
+    VT{k} = P_TestWT_estimated{k}*Coef_vt{k}(1)+Coef_vt{k}(2);
+
+    x_axis = [0 3000];
+    
+    figure(17)
+    plot(P_TestWT_estimated{k},filtered_data.ControlWTPost.WindSpeed(idx_ControlWTPost_NacPos{n}),'.')
+    hold on
+    plot(xFit,yFit)
+    plot(x_axis,(x_axis*Coef_vt{k}(1)+Coef_vt{k}(2)),'--')
+    hold off
+    grid on
+    ylabel 'v_T [m/s]'
+    xlabel 'P_T [W]'
+    title 'P to U'
+    
+    1;
+
+end
+
+
+% plot power curve of Pt measured versus Vt
 
 
 
+figure(18)
 
+% plot(VT{1},P_TestWT_estimated{1},'.')
+plot(VT{1},filtered_data_new.TestWTPre.PowerActive(idx_ControlWTPost_NacPos{Columns_of_interest(1)}),'.')
+hold on
+for k=2:length(Columns_of_interest)
+    % plot(VT{k},P_TestWT_estimated{k},'.')
+    plot(VT{k},filtered_data_new.TestWTPre.PowerActive(idx_ControlWTPost_NacPos{Columns_of_interest(k)}),'.')
+1;
+end
+hold off
+grid on
+xlabel 'VT [m/s]'
+ylabel 'Pow TestWT estimated'
+title 'Woah def not right! Need to come back to this...'
 
 
