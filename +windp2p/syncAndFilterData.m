@@ -178,6 +178,29 @@ filtered_data.ControlWTPost = strip_data_bad_inds_all_fields (filtered_data.Cont
 
 %%%%%%%%%% New addition end
 
+%%%%%%%%%% New addition, remove all negative powers
+
+% NOTE: This is to simplify the binning process later.
+
+bad_inds = find((filtered_data.ControlWTPre.PowerActive) < 0);
+filtered_data.ControlWTPre =  strip_data_bad_inds_all_fields (filtered_data.ControlWTPre, bad_inds);
+filtered_data.TestWTPre = strip_data_bad_inds_all_fields (filtered_data.TestWTPre, bad_inds);
+
+bad_inds = find((filtered_data.ControlWTPost.PowerActive) < 0);
+filtered_data.ControlWTPost = strip_data_bad_inds_all_fields (filtered_data.ControlWTPost, bad_inds);
+filtered_data.TestWTPost = strip_data_bad_inds_all_fields (filtered_data.TestWTPost, bad_inds);
+
+bad_inds = find((filtered_data.TestWTPre.PowerActive) < 0);
+filtered_data.TestWTPre = strip_data_bad_inds_all_fields (filtered_data.TestWTPre, bad_inds);
+filtered_data.ControlWTPre =  strip_data_bad_inds_all_fields (filtered_data.ControlWTPre, bad_inds);
+
+bad_inds = find((filtered_data.TestWTPost.PowerActive) < 0);
+filtered_data.TestWTPost = strip_data_bad_inds_all_fields (filtered_data.TestWTPost, bad_inds);
+filtered_data.ControlWTPost = strip_data_bad_inds_all_fields (filtered_data.ControlWTPost, bad_inds);
+
+%%%%%%%%%% New addition end
+
+
 
 
 if options.Troubleshooting == 2
