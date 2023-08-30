@@ -18,9 +18,9 @@ if SELECT_DATA == 'dummy'
     data = FCN_dummy_data(PlotInputData);
 
 elseif SELECT_DATA == 'Cubic'
-    
+
     folder = fullfile(nextcloud_dir(), 'Field-Data', 'wind', 'Cubico');
-    
+
     % Select data fields of interest (Column 1 = new names, Column 2 = nc file names)
     data_mapping = {'Time',                 'TimeStamp'; ...
                     'OmegaRotor',           'Rotor speed';...
@@ -39,19 +39,19 @@ elseif SELECT_DATA == 'Cubic'
                     };
 
     % Names of all available turbines
-    WTs = string(['Cubico_Middlewick_WTG_1_10min_2022';...
-        'Cubico_Middlewick_WTG_2_10min_2022';...
-        'Cubico_Middlewick_WTG_3_10min_2022';...
-        'Cubico_Middlewick_WTG_4_10min_2022';...
-        'Cubico_Middlewick_WTG_5_10min_2022';...
-        'Cubico_Middlewick_WTG_6_10min_2022';...
-        'Cubico_Middlewick_WTG_7_10min_2022';...
-        'Cubico_Middlewick_WTG_8_10min_2022';...
-        'Cubico_Middlewick_WTG_9_10min_2022']);
-    
+    WTs = {'Cubico_Middlewick_WTG_1_10min_2022';...
+           'Cubico_Middlewick_WTG_2_10min_2022';...
+           'Cubico_Middlewick_WTG_3_10min_2022';...
+           'Cubico_Middlewick_WTG_4_10min_2022';...
+           'Cubico_Middlewick_WTG_5_10min_2022';...
+           'Cubico_Middlewick_WTG_6_10min_2022';...
+           'Cubico_Middlewick_WTG_7_10min_2022';...
+           'Cubico_Middlewick_WTG_8_10min_2022';...
+           'Cubico_Middlewick_WTG_9_10min_2022' };
+
     % Selection of turbine pairs
-    SELECT_Control_WT = WTs(3);
-    SELECT_Test_WT = WTs(6);
+    SELECT_Control_WT = WTs{3};
+    SELECT_Test_WT = WTs{6};
 
     % Concatonate and separate pre mod and post mod (approx 3/4 of data for pre mod and 1/4 for post mod)
     [data.ControlWTPre, infoCWTpre] = reos.sys.flowTurbine.loadRawData ( 'Folder', folder, ...
@@ -68,8 +68,8 @@ elseif SELECT_DATA == 'Cubic'
                                               'Mapping', data_mapping, ...
                                               'Start', datetime(2022,02,08), ...
                                               'Stop', datetime(2022,03,24) ...
-                                            ); 
-    
+                                            );
+
     [data.ControlWTPost, infoCWTpost] = reos.sys.flowTurbine.loadRawData ( 'Folder', folder, ...
                                               'FilePrefix', SELECT_Control_WT, ...
                                               'Ext', ".nc", ...
@@ -84,7 +84,7 @@ elseif SELECT_DATA == 'Cubic'
                                               'Mapping', data_mapping, ...
                                               'Start', datetime(2022,03,25), ...
                                               'Stop', datetime(2022,04,06) ...
-                                            ); 
+                                            );
 
     data.ControlWTPre.Time=data.ControlWTPre.Time{1,1}';
     data.ControlWTPost.Time=data.ControlWTPost.Time{1,1}';
@@ -132,7 +132,7 @@ elseif SELECT_DATA == 'Cubic'
     data.TestWTPre.WpsStatus=data.TestWTPre.WpsStatus';
     data.TestWTPre.WTOperationState=data.TestWTPre.WTOperationState';
     data.TestWTPre.ProductionFactor=data.TestWTPre.ProductionFactor';
-    
+
     data.TestWTPost.OmegaRotor=data.TestWTPost.OmegaRotor';
     data.TestWTPost.RPM=data.TestWTPost.RPM';
     data.TestWTPost.PowerActive=data.TestWTPost.PowerActive';
@@ -156,9 +156,9 @@ elseif SELECT_DATA == 'Nordi'
     % placeholder
 
 elseif SELECT_DATA == 'Lisse'
-    
+
     folder = 'C:\Users\mkervyn\Documents\MATLAB\Ventient_data';
-    
+
     % Select data fields of interest (Column 1 = new names, Column 2 = nc file names)
     data_mapping = {'Time',                 'TimeStamp'; ...
                     'OmegaRotor',           'Rotor speed';...
@@ -178,20 +178,20 @@ elseif SELECT_DATA == 'Lisse'
                     };
 
     % Names of all available turbines
-    WTs = string(['Ventient_Lissett-Airfield_WTG_103_30s_';...
-        'Ventient_Lissett-Airfield_WTG_104_30s_';...
-        'Ventient_Lissett-Airfield_WTG_105_30s_';...
-        'Ventient_Lissett-Airfield_WTG_106_30s_';...
-        'Ventient_Lissett-Airfield_WTG_107_30s_';...
-        'Ventient_Lissett-Airfield_WTG_108_30s_';...
-        'Ventient_Lissett-Airfield_WTG_109_30s_';...
-        'Ventient_Lissett-Airfield_WTG_110_30s_';...
-        'Ventient_Lissett-Airfield_WTG_111_30s_';...
-        ]);
-    
+    WTs = {'Ventient_Lissett-Airfield_WTG_103_30s_';...
+           'Ventient_Lissett-Airfield_WTG_104_30s_';...
+           'Ventient_Lissett-Airfield_WTG_105_30s_';...
+           'Ventient_Lissett-Airfield_WTG_106_30s_';...
+           'Ventient_Lissett-Airfield_WTG_107_30s_';...
+           'Ventient_Lissett-Airfield_WTG_108_30s_';...
+           'Ventient_Lissett-Airfield_WTG_109_30s_';...
+           'Ventient_Lissett-Airfield_WTG_110_30s_';...
+           'Ventient_Lissett-Airfield_WTG_111_30s_';...
+          };
+
     % Selection of turbine pairs
-    SELECT_Control_WT = WTs(2);
-    SELECT_Test_WT = WTs(4);
+    SELECT_Control_WT = WTs{2};
+    SELECT_Test_WT = WTs{4};
 
     % Concatonate and separate pre mod and post mod (approx 3/4 of data for pre mod and 1/4 for post mod)
     [data.ControlWTPre, infoCWTpre] = reos.sys.flowTurbine.loadRawData ( 'Folder', folder, ...
@@ -208,8 +208,8 @@ elseif SELECT_DATA == 'Lisse'
                                               'Mapping', data_mapping, ...
                                               'Start', datetime(2023,06,23), ...
                                               'Stop', datetime(2023,07,30) ...
-                                            ); 
-    
+                                            );
+
     [data.ControlWTPost, infoCWTpost] = reos.sys.flowTurbine.loadRawData ( 'Folder', folder, ...
                                               'FilePrefix', SELECT_Control_WT, ...
                                               'Ext', ".nc", ...
@@ -224,7 +224,7 @@ elseif SELECT_DATA == 'Lisse'
                                               'Mapping', data_mapping, ...
                                               'Start', datetime(2023,08,1), ...
                                               'Stop', datetime(2023,08,30) ...
-                                            ); 
+                                            );
 
     data.ControlWTPre.Time=data.ControlWTPre.Time{1,1}';
     data.ControlWTPost.Time=data.ControlWTPost.Time{1,1}';
@@ -352,7 +352,7 @@ hold on
 plot(DateTimeTestWTPre,data.TestWTPre.RPM,'ob')
 hold off
 grid on
-legend ControlWTPre TestWTPre 
+legend ControlWTPre TestWTPre
 ylabel 'RPM'
 title 'LHS: Pre modification of control turbine'
 ax2=subplot(5,2,2);
@@ -425,7 +425,7 @@ grid on
 
 linkaxes([ax1 ax3 ax5 ax7 ax9],'x')
 linkaxes([ax2 ax4 ax6 ax8 ax10],'x')
-% xlim([     min([data.ControlWTPost.Time(1) data.TestWTPost.Time(1)]) 
+% xlim([     min([data.ControlWTPost.Time(1) data.TestWTPost.Time(1)])
 %     max([data.ControlWTPost.Time(end) data.TestWTPost.Time(end)])    ])
 
 
@@ -440,27 +440,27 @@ sgtitle 'Comparing Control and Test turbines '
 % degree_separation_per_bin = 4;% degrees
 % No_threshold_direction = 360/degree_separation_per_bin+1;
 % nacelle_direction_edges = linspace(0, 360, No_threshold_direction);
-% 
+%
 % dev1 = data.TestWTPre.DirectionNacelle;
 % dev2 = data.ControlWTPre.DirectionNacelle;
-% 
+%
 % deviation_raw = wrapTo180(dev1-dev2);
-% 
+%
 % for k=1:(length(nacelle_direction_edges)-1)
 %     idx_ControlWTPre_WindDir{k}=find((data.ControlWTPre.DirectionNacelle>=nacelle_direction_edges(k)) & (data.ControlWTPre.DirectionNacelle<=nacelle_direction_edges(k+1)));
 %     idx_TestWTPre_WindDir{k}=find((data.TestWTPre.DirectionNacelle>=nacelle_direction_edges(k)) & (data.TestWTPre.DirectionNacelle<=nacelle_direction_edges(k+1)));
-% 
+%
 %     Pow_binned_ControlWTpre(k) = mean(data.ControlWTPre.PowerActive(idx_ControlWTPre_WindDir{k}));
 %     Pow_binned_TestWTpre(k) = mean(data.TestWTPre.PowerActive(idx_TestWTPre_WindDir{k}));
-% 
+%
 %     U_binned_ControlWTpre(k) = mean(data.ControlWTPre.WindSpeed(idx_ControlWTPre_WindDir{k}));
 %     U_binned_TestWTpre(k) = mean(data.TestWTPre.WindSpeed(idx_TestWTPre_WindDir{k}));
-% 
+%
 %     deviation(k) = mean(deviation_raw(idx_TestWTPre_WindDir{k}));
 % end
-% 
+%
 % midpoint = 0.5*((nacelle_direction_edges(1:(No_threshold_direction-1)))+(nacelle_direction_edges(2:(No_threshold_direction))));
-% 
+%
 % % % % CLEARLY SOME OF THIS MEASUREMENTS MUST BE MADE WITH BINNED DATAPOINTS
 % figure(4)
 % ax1=subplot(1,2,1);
@@ -502,7 +502,7 @@ Datagap_inFill = 3;
 Mean_timestep = mean(diff(data.ControlWTPre.Time));
 
 % 3) Set out lower threshold of RPM
-lower_threshold_rpm_per_unit = 0.1; 
+lower_threshold_rpm_per_unit = 0.1;
 Max_gen_rpm = max([max(data.ControlWTPre.RPM) max(data.ControlWTPost.RPM)...
     max(data.TestWTPre.RPM) max(data.TestWTPost.RPM)]);
 
@@ -559,7 +559,7 @@ hold on
 plot(filtered_data.ControlWTPre.Time,filtered_data.ControlWTPre.RPM,'ob')
 hold off
 grid minor
-legend Unfiltered Filtered 
+legend Unfiltered Filtered
 ylabel 'RPM'
 % xlim([0 500])
 title 'ControlWTPre'
@@ -571,7 +571,7 @@ hold off
 grid minor
 ylabel 'P'
 % xlim([0 500])
-% % % % % 
+% % % % %
 ax2=subplot(4,4,2);
 plot(data.TestWTPre.Time,data.TestWTPre.RPM,'*r')
 hold on
@@ -589,7 +589,7 @@ hold off
 grid minor
 ylabel 'P'
 % xlim([0 500])
-% % % % % 
+% % % % %
 ax3=subplot(4,4,3);
 plot(data.ControlWTPost.Time,data.ControlWTPost.RPM,'*r')
 hold on
@@ -607,7 +607,7 @@ hold off
 grid minor
 ylabel 'P'
 % xlim([0 500]+10000)
-% % % % % 
+% % % % %
 ax4=subplot(4,4,4);
 plot(data.TestWTPost.Time,data.TestWTPost.RPM,'*r')
 hold on
@@ -633,7 +633,7 @@ hold on
 plot(filtered_data.ControlWTPre.Time,filtered_data.ControlWTPre.TemperatureExternal,'ob')
 hold off
 grid minor
-legend Unfiltered Filtered 
+legend Unfiltered Filtered
 ylabel 'Temp Ext'
 % xlim([0 500])
 ylim([-5 20])
@@ -645,7 +645,7 @@ hold off
 grid minor
 ylabel 'Dir Nacelle'
 % xlim([0 500])
-% % % % % 
+% % % % %
 ax10=subplot(4,4,10);
 plot(data.TestWTPre.Time,data.TestWTPre.TemperatureExternal,'*r')
 hold on
@@ -663,7 +663,7 @@ hold off
 grid minor
 ylabel 'Dir Nacelle'
 % xlim([0 500])
-% % % % % 
+% % % % %
 ax11=subplot(4,4,11);
 plot(data.ControlWTPost.Time,data.ControlWTPost.TemperatureExternal,'*r')
 hold on
@@ -681,7 +681,7 @@ hold off
 grid minor
 ylabel 'Dir Nacelle'
 % xlim([0 500]+10000)
-% % % % % 
+% % % % %
 ax12=subplot(4,4,12);
 plot(data.TestWTPost.Time,data.TestWTPost.TemperatureExternal,'*r')
 hold on
@@ -838,7 +838,7 @@ plot(New_shifted_NacDir_column1,'.')
 plot(Table_NacDir.NacDir_column2_ControlWTPre,'.')
 plot(Average_error,'.')
 hold off
-legend Column1Test 'Column1Test-AverageError' Column2Control Error 
+legend Column1Test 'Column1Test-AverageError' Column2Control Error
 title 'Error in Nacelle Position between two WTs'
 
 filtered_data_new.ControlWTPre.DirectionNacelleCorrected = wrapTo360(filtered_data_new.ControlWTPre.DirectionNacelle + Average_error_sum);
@@ -864,7 +864,7 @@ clear Pow_binned_ControlWTpre Pow_binned_TestWTpre U_binned_ControlWTpre U_binne
 for k=1:(length(nacelle_direction_edges)-1)
     idx_ControlWTPre_WindDir{k}=find((filtered_data_new.ControlWTPre.DirectionNacelleCorrected>=nacelle_direction_edges(k)) & (filtered_data_new.ControlWTPre.DirectionNacelleCorrected<=nacelle_direction_edges(k+1)));
     idx_TestWTPre_WindDir{k}=find((filtered_data_new.TestWTPre.DirectionNacelle>=nacelle_direction_edges(k)) & (filtered_data_new.TestWTPre.DirectionNacelle<=nacelle_direction_edges(k+1)));
-    
+
     Pow_binned_ControlWTpre(k) = mean(filtered_data_new.ControlWTPre.PowerActive(idx_ControlWTPre_WindDir{k}));
     Pow_binned_TestWTpre(k) = mean(filtered_data_new.TestWTPre.PowerActive(idx_TestWTPre_WindDir{k}));
 
@@ -929,7 +929,7 @@ plot(New_shifted_WindDir_column1,'.')
 plot(Table_WindDir.WindDir_column2_ControlWTPre,'.')
 plot(Average_error,'.')
 hold off
-legend Column1Test 'Column1Test-AverageError' Column2Control Error 
+legend Column1Test 'Column1Test-AverageError' Column2Control Error
 title 'Error in Wind Direction between two WTs'
 
 filtered_data_new.ControlWTPre.WindDirectionCorrected = wrapTo360(filtered_data_new.ControlWTPre.WindDirection...
@@ -965,7 +965,7 @@ clear Pow_binned_ControlWTpre Pow_binned_TestWTpre ...
 for k=1:(length(wind_direction_edges)-1)
     idx_ControlWTPre_WindDir{k}=find((filtered_data_new.ControlWTPre.WindDirectionCorrected>=wind_direction_edges(k)) & (filtered_data_new.ControlWTPre.WindDirectionCorrected<=wind_direction_edges(k+1)));
     idx_TestWTPre_WindDir{k}=find((filtered_data_new.TestWTPre.WindDirection>=wind_direction_edges(k)) & (filtered_data_new.TestWTPre.WindDirection<=wind_direction_edges(k+1)));
-    
+
     Pow_binned_ControlWTpre_mean(k) = mean(filtered_data_new.ControlWTPre.PowerActive(idx_ControlWTPre_WindDir{k}));
     Pow_binned_TestWTpre_mean(k) = mean(filtered_data_new.TestWTPre.PowerActive(idx_TestWTPre_WindDir{k}));
 
@@ -1058,7 +1058,7 @@ clear idx_ControlWTPre_Power idx_ControlWTPre_NacPos
 for k=1:(length(nacelle_pos_edges)-1)
 
     idx_ControlWTPre_NacPos{k}=find((filtered_data_new.ControlWTPre.DirectionNacelleCorrected>=nacelle_pos_edges(k)) & (filtered_data_new.ControlWTPre.DirectionNacelleCorrected<=nacelle_pos_edges(k+1)));
-    
+
     % figure(1100)
     % plot(DateTimeControlWTPre_New(idx_ControlWTPre_NacPos{k}),filtered_data_new.ControlWTPre.DirectionNacelleCorrected(idx_ControlWTPre_NacPos{k}),'.')
     % grid on
@@ -1092,15 +1092,15 @@ end
 % clc
 % row=6;% power bins
 % column=20;% nacelle direction bins
-% 
+%
 % Ptest=filtered_data_new.ControlWTPre.PowerActive...
 %     (idx_ControlWTPre_Power{row,column});
-% 
+%
 % PTEST = [min(Ptest) max(Ptest)]
-% 
+%
 % DirNactest=filtered_data_new.ControlWTPre.DirectionNacelleCorrected...
 %     (idx_ControlWTPre_Power{row,column});
-% 
+%
 % DNTEST = [min(DirNactest) max(DirNactest)]
 
 %% Now plotting Power-to-power according to WindGuard
@@ -1129,7 +1129,7 @@ Columns_of_interest=find(Column_Sum==0);
 % for k=1:length(Columns_of_interest)
 %     x=PmeanControlWT(1:5,Columns_of_interest(k));
 %     y=PmeanTestWT(1:5,Columns_of_interest(k));
-% 
+%
 %     coefficients = polyfit(x, y, 1);
 %     xFit = linspace(0, base_kW, 1000);
 %     yFit = polyval(coefficients , xFit);
@@ -1140,7 +1140,7 @@ Columns_of_interest=find(Column_Sum==0);
 for k=1:length(Columns_of_interest)
     x=PmeanControlWT(1:6,Columns_of_interest(k));
     y=PmeanTestWT(1:6,Columns_of_interest(k));
-    c(k) = x\y;            
+    c(k) = x\y;
 end
 
 x_axis=[0 3000];
@@ -1179,7 +1179,7 @@ DateTimeTestWTPost_new=datetime(1970,1,1,0,0,filtered_data.TestWTPost.Time);
 for k=1:(length(nacelle_pos_edges)-1)
 
     idx_ControlWTPost_NacPos{k}=find((filtered_data.ControlWTPost.DirectionNacelle+ Average_error_sum>=nacelle_pos_edges(k)) & (filtered_data.ControlWTPost.DirectionNacelle+ Average_error_sum<=nacelle_pos_edges(k+1)));
-    
+
     % figure(1101)
     % plot(DateTimeTestWTPost_new(idx_TestWTPost_NacPos{k}),filtered_data.TestWTPost.DirectionNacelle(idx_TestWTPost_NacPos{k}),'.')
     % grid on
@@ -1283,10 +1283,10 @@ title 'Using mean values only'
 % Step 1: choose wind direction bin according to nacelle position
 for k=1:length(Columns_of_interest)
     n=Columns_of_interest(k); % ie 270 - 280 degrees
-    
+
     % Step 2: Reproduce power output of test turbine for relevant direction bin.
     P_TestWT_estimated{k} = c(k)*filtered_data.ControlWTPost.PowerActive(idx_ControlWTPost_NacPos{n});
-    
+
     % Step 3: calculate wind speed at test turbine by piecewise linear fit
     % of power curve
 
@@ -1302,7 +1302,7 @@ for k=1:length(Columns_of_interest)
     VT{k} = P_TestWT_estimated{k}*Coef_vt{k}(1)+Coef_vt{k}(2);
 
     x_axis = [0 3000];
-    
+
     figure(17)
     plot(P_TestWT_estimated{k},filtered_data.ControlWTPost.WindSpeed(idx_ControlWTPost_NacPos{n}),'.')
     hold on
@@ -1313,7 +1313,7 @@ for k=1:length(Columns_of_interest)
     ylabel 'v_T [m/s]'
     xlabel 'P_T [W]'
     title 'P to U'
-    
+
     1;
 
 end
