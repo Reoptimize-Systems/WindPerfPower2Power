@@ -551,79 +551,78 @@ sgtitle 'Control WT (pre)'
 
 
 
-
 figure(201)
 ax1=subplot(4,4,1);
-plot(data.ControlWTPre.Time,data.ControlWTPre.RPM,'*r')
+plot(data.ControlWTPre.Time,data.ControlWTPre.RPM/1.3e3,'*r')
 hold on
-plot(filtered_data.ControlWTPre.Time,filtered_data.ControlWTPre.RPM,'ob')
+plot(filtered_data.ControlWTPre.Time,filtered_data.ControlWTPre.RPM/1.3e3,'ob')
 hold off
 grid minor
 legend Unfiltered Filtered 
-ylabel 'RPM'
+ylabel 'Gen speed [pu]'
 % xlim([0 500])
 title 'ControlWTPre'
 ax5=subplot(4,4,5);
-plot(data.ControlWTPre.Time,data.ControlWTPre.PowerActive,'*r')
+plot(data.ControlWTPre.Time,data.ControlWTPre.PowerActive/2.5e3,'*r')
 hold on
-plot(filtered_data.ControlWTPre.Time,filtered_data.ControlWTPre.PowerActive,'ob')
+plot(filtered_data.ControlWTPre.Time,filtered_data.ControlWTPre.PowerActive/2.5e3,'ob')
 hold off
 grid minor
-ylabel 'P'
+ylabel 'P [pu]'
 % xlim([0 500])
 % % % % % 
 ax2=subplot(4,4,2);
-plot(data.TestWTPre.Time,data.TestWTPre.RPM,'*r')
+plot(data.TestWTPre.Time,data.TestWTPre.RPM/1.3e3,'*r')
 hold on
-plot(filtered_data.TestWTPre.Time,filtered_data.TestWTPre.RPM,'ob')
+plot(filtered_data.TestWTPre.Time,filtered_data.TestWTPre.RPM/1.3e3,'ob')
 hold off
 grid minor
-ylabel 'RPM'
+ylabel 'Gen speed [pu]'
 % xlim([0 500])
 title 'TestWTPre'
 ax6=subplot(4,4,6);
-plot(data.TestWTPre.Time,data.TestWTPre.PowerActive,'*r')
+plot(data.TestWTPre.Time,data.TestWTPre.PowerActive/2.5e3,'*r')
 hold on
-plot(filtered_data.TestWTPre.Time,filtered_data.TestWTPre.PowerActive,'ob')
+plot(filtered_data.TestWTPre.Time,filtered_data.TestWTPre.PowerActive/2.5e3,'ob')
 hold off
 grid minor
-ylabel 'P'
+ylabel 'P [pu]'
 % xlim([0 500])
 % % % % % 
 ax3=subplot(4,4,3);
-plot(data.ControlWTPost.Time,data.ControlWTPost.RPM,'*r')
+plot(data.ControlWTPost.Time,data.ControlWTPost.RPM/1.3e3,'*r')
 hold on
-plot(filtered_data.ControlWTPost.Time,filtered_data.ControlWTPost.RPM,'ob')
+plot(filtered_data.ControlWTPost.Time,filtered_data.ControlWTPost.RPM/1.3e3,'ob')
 hold off
 grid minor
-ylabel 'RPM'
+ylabel 'Gen speed [pu]'
 % xlim([0 500]+10000)
 title 'ControlWTPost'
 ax7=subplot(4,4,7);
-plot(data.ControlWTPost.Time,data.ControlWTPost.PowerActive,'*r')
+plot(data.ControlWTPost.Time,data.ControlWTPost.PowerActive/2.5e3,'*r')
 hold on
-plot(filtered_data.ControlWTPost.Time,filtered_data.ControlWTPost.PowerActive,'ob')
+plot(filtered_data.ControlWTPost.Time,filtered_data.ControlWTPost.PowerActive/2.5e3,'ob')
 hold off
 grid minor
-ylabel 'P'
+ylabel 'P [pu]'
 % xlim([0 500]+10000)
 % % % % % 
 ax4=subplot(4,4,4);
-plot(data.TestWTPost.Time,data.TestWTPost.RPM,'*r')
+plot(data.TestWTPost.Time,data.TestWTPost.RPM/1.3e3,'*r')
 hold on
-plot(filtered_data.TestWTPost.Time,filtered_data.TestWTPost.RPM,'ob')
+plot(filtered_data.TestWTPost.Time,filtered_data.TestWTPost.RPM/1.3e3,'ob')
 hold off
 grid minor
-ylabel 'RPM'
+ylabel 'Gen speed [pu]'
 % xlim([0 500]+10000)
 title 'TestWTPost'
 ax8=subplot(4,4,8);
-plot(data.TestWTPost.Time,data.TestWTPost.PowerActive,'*r')
+plot(data.TestWTPost.Time,data.TestWTPost.PowerActive/2.5e3,'*r')
 hold on
-plot(filtered_data.TestWTPost.Time,filtered_data.TestWTPost.PowerActive,'ob')
+plot(filtered_data.TestWTPost.Time,filtered_data.TestWTPost.PowerActive/2.5e3,'ob')
 hold off
 grid minor
-ylabel 'P'
+ylabel 'P [pu]'
 % xlim([0 500]+10000)
 %
 %
@@ -636,7 +635,7 @@ grid minor
 legend Unfiltered Filtered 
 ylabel 'Temp Ext'
 % xlim([0 500])
-ylim([-5 20])
+% ylim([-5 20])
 ax13=subplot(4,4,13);
 plot(data.ControlWTPre.Time,data.ControlWTPre.DirectionNacelle,'*r')
 hold on
@@ -644,6 +643,7 @@ plot(filtered_data.ControlWTPre.Time,filtered_data.ControlWTPre.DirectionNacelle
 hold off
 grid minor
 ylabel 'Dir Nacelle'
+xlabel 'Time [s]'
 % xlim([0 500])
 % % % % % 
 ax10=subplot(4,4,10);
@@ -654,7 +654,7 @@ hold off
 grid minor
 ylabel 'Temp Ext'
 % xlim([0 500])
-ylim([-5 20])
+% ylim([-5 20])
 ax14=subplot(4,4,14);
 plot(data.TestWTPre.Time,data.TestWTPre.DirectionNacelle,'*r')
 hold on
@@ -662,6 +662,7 @@ plot(filtered_data.TestWTPre.Time,filtered_data.TestWTPre.DirectionNacelle,'ob')
 hold off
 grid minor
 ylabel 'Dir Nacelle'
+xlabel 'Time [s]'
 % xlim([0 500])
 % % % % % 
 ax11=subplot(4,4,11);
@@ -672,7 +673,7 @@ hold off
 grid minor
 ylabel 'Temp Ext'
 % xlim([0 500]+10000)
-ylim([-5 20])
+% ylim([-5 20])
 ax15=subplot(4,4,15);
 plot(data.ControlWTPost.Time,data.ControlWTPost.DirectionNacelle,'*r')
 hold on
@@ -680,6 +681,7 @@ plot(filtered_data.ControlWTPost.Time,filtered_data.ControlWTPost.DirectionNacel
 hold off
 grid minor
 ylabel 'Dir Nacelle'
+xlabel 'Time [s]'
 % xlim([0 500]+10000)
 % % % % % 
 ax12=subplot(4,4,12);
@@ -690,7 +692,7 @@ hold off
 grid minor
 ylabel 'Temp Ext'
 % xlim([0 500]+10000)
-ylim([-5 20])
+% ylim([-5 20])
 ax16=subplot(4,4,16);
 plot(data.TestWTPost.Time,data.TestWTPost.DirectionNacelle,'*r')
 hold on
@@ -698,6 +700,7 @@ plot(filtered_data.TestWTPost.Time,filtered_data.TestWTPost.DirectionNacelle,'ob
 hold off
 grid minor
 ylabel 'Dir Nacelle'
+xlabel 'Time [s]'
 % xlim([0 500]+10000)
 
 % xlim([     min([data.ControlWTPre.Time(1) data.TestWTPre.Time(1)])...
@@ -753,60 +756,60 @@ DateTimeControlWTPreNew=datetime(1970,1,1,0,0,filtered_data_new.ControlWTPre.Tim
 %% Consistency of Turbine Settings
 
 figure(202)
-subplot(2,1,1)
-plot(filtered_data_new.ControlWTPre.PowerActive,filtered_data_new.ControlWTPre.RPM,'.r')
+subplot(2,2,1)
+plot(filtered_data_new.ControlWTPre.PowerActive/2.5e3,filtered_data_new.ControlWTPre.RPM/1.3e3,'.r')
 hold on
-plot(filtered_data.ControlWTPost.PowerActive,filtered_data.ControlWTPost.RPM,'.b')
+plot(filtered_data.ControlWTPost.PowerActive/2.5e3,filtered_data.ControlWTPost.RPM/1.3e3,'.b')
 hold off
 grid on
-xlabel 'Power [kW]'
-ylabel 'RPM'
-title Speed
-ylim([600 1300])
+xlabel 'Power [pu]'
+ylabel 'Gen Speed [pu]'
+% title Speed
+ylim([600 1300]/1.3e3)
 legend 'Pre' 'Post' location southeast
-subplot(2,1,2)
-plot(filtered_data_new.ControlWTPre.PowerActive,filtered_data_new.ControlWTPre.PitchAngleA,'.r')
+title 'Control WT'
+%
+subplot(2,2,3)
+plot(filtered_data_new.ControlWTPre.PowerActive/2.5e3,filtered_data_new.ControlWTPre.PitchAngleA,'.r')
 hold on
-plot(filtered_data.ControlWTPost.PowerActive,filtered_data.ControlWTPost.PitchAngleA,'.b')
+plot(filtered_data.ControlWTPost.PowerActive/2.5e3,filtered_data.ControlWTPost.PitchAngleA,'.b')
 hold off
 grid on
-xlabel 'Power [kW]'
-ylabel 'RPM'
-title Pitch
+xlabel 'Power [pu]'
+ylabel 'Pitch [deg]'
+% title Pitch
 ylim([-1 20])
-sgtitle 'Control WT'
 
-figure(203)
-subplot(2,1,1)
-plot(filtered_data_new.TestWTPre.PowerActive,filtered_data_new.TestWTPre.RPM,'.r')
+% figure(203)
+subplot(2,2,2)
+plot(filtered_data_new.TestWTPre.PowerActive/2.5e3,filtered_data_new.TestWTPre.RPM/1.3e3,'.r')
 hold on
-plot(filtered_data.TestWTPost.PowerActive,filtered_data.TestWTPost.RPM,'.b')
+plot(filtered_data.TestWTPost.PowerActive/2.5e3,filtered_data.TestWTPost.RPM/1.3e3,'.b')
 hold off
 grid on
-xlabel 'Power [kW]'
-ylabel 'RPM'
-title Speed
-ylim([600 1300])
-legend 'Pre' 'Post' location southeast
-subplot(2,1,2)
-plot(filtered_data_new.TestWTPre.PowerActive,filtered_data_new.TestWTPre.PitchAngleA,'.r')
+xlabel 'Power [pu]'
+ylabel 'Gen Speed [pu]'
+% title Speed
+ylim([600 1300]/1.3e3)
+% legend 'Pre' 'Post' location southeast
+title 'Test WT'
+%
+subplot(2,2,4)
+plot(filtered_data_new.TestWTPre.PowerActive/2.5e3,filtered_data_new.TestWTPre.PitchAngleA,'.r')
 hold on
-plot(filtered_data.TestWTPost.PowerActive,filtered_data.TestWTPost.PitchAngleA,'.b')
+plot(filtered_data.TestWTPost.PowerActive/2.5e3,filtered_data.TestWTPost.PitchAngleA,'ob')
 hold off
 grid on
-xlabel 'Power [kW]'
-ylabel 'RPM'
-title Pitch
+xlabel 'Power [pu]'
+ylabel 'Pitch [deg]'
+% title Pitch
 ylim([-1 20])
-sgtitle 'Test WT'
-
+% sgtitle 'Test WT'
 
 % Possibility to use these plots to clean up some more...?
 
 
 %%  Northing filtered data
-
-
 
 degree_separation_per_bin = 4;% degrees
 No_threshold_direction = 360/degree_separation_per_bin+1;
@@ -837,6 +840,7 @@ plot(New_shifted_NacDir_column1,'.')
 plot(Table_NacDir.NacDir_column2_ControlWTPre,'.')
 plot(Average_error,'.')
 hold off
+grid on
 legend Column1Test 'Column1Test-AverageError' Column2Control Error 
 title 'Error in Nacelle Position between two WTs'
 
@@ -872,7 +876,6 @@ for k=1:(length(nacelle_direction_edges)-1)
 
     deviation(k) = mean(deviation_raw(idx_TestWTPre_WindDir{k}));
 end
-
 
 figure(5)
 ax1=subplot(1,2,1);
@@ -988,7 +991,6 @@ for k=1:(length(wind_direction_edges)-1)
 
 end
 
-
 base_kW = 2500;
 
 figure(6)
@@ -1091,7 +1093,6 @@ for k=1:(length(nacelle_pos_edges)-1)
 
 end
 
-
 % Clearing any indices that appear in idx_ControlWTPre_NacPos but not in idx_ControlWTPre_Power
 for k=1:(length(nacelle_pos_edges)-1)
     idx_ControlWTPre_NacPos{k}=[]; 
@@ -1103,7 +1104,6 @@ for k=1:(length(nacelle_pos_edges)-1)
 
     end
 end
-
 
 %% Windguard's slide 11: Power-to-power relationships 
 
@@ -1148,21 +1148,21 @@ end
 x_axis=[0 2625];
 
 figure(12)
-plot(PmeanControlWT(:,Columns_of_interest(1)),PmeanTestWT(:,Columns_of_interest(1)),'.')
+plot(PmeanControlWT(:,Columns_of_interest(1))/base_kW,PmeanTestWT(:,Columns_of_interest(1))/base_kW,'.')
 hold on
 for column=2:length(Columns_of_interest)
-    plot(PmeanControlWT(:,Columns_of_interest(column)),PmeanTestWT(:,Columns_of_interest(column)),'.')
+    plot(PmeanControlWT(:,Columns_of_interest(column))/base_kW,PmeanTestWT(:,Columns_of_interest(column))/base_kW,'.')
 end
 set(gca,'ColorOrderIndex',1)
-plot(x_axis,(x_axis*c(1)))
+plot(x_axis/base_kW,(x_axis*c(1))/base_kW)
 for column=2:length(Columns_of_interest)
-    plot(x_axis,(x_axis*c(column)))
+    plot(x_axis/base_kW,(x_axis*c(column))/base_kW)
 end
-legend 18 19 20 25 26 27 28 29 30 31 32 33 location northwest
+legend 170-180 180-190 240-250 250-260 260-270 270-280 280-290 290-300 300-310 310-320 320-330 location northwest
 hold off
 grid minor
-xlabel Pcontrol
-ylabel Ptest
+xlabel 'P_{control} [pu]'
+ylabel 'P_{test} [pu]'
 
 %% Comparing time domain instantaneous estimation of Test WT power relative to Control WT power USING TESTING DATA
 
@@ -1275,7 +1275,7 @@ title 'Using mean values only'
 
 %% Obtain PTestimated from PC for training data
 
-clear P_TestWT_estimated Coef_vt VT
+clear P_TestWT_estimated Coef_TestWTindexing VT
 
 % Step 1: choose wind direction bin according to nacelle position
 for k=1:1:length(Columns_of_interest)
@@ -1346,9 +1346,9 @@ end
 
 clc
 
-clear U_TestWT_bestfit x y Coef_vt
+clear U_TestWT_bestfit x y Coef_TestWTindexing
 
-SELECT_Fitting_Technique = 2; % 1 = polyfit, 2 = piecewise linear fit
+SELECT_Fitting_Technique = 1; % 1 = polyfit, 2 = piecewise linear fit
 
 for k=1:1:length(Columns_of_interest)
     n=Columns_of_interest(k);
@@ -1358,35 +1358,29 @@ for k=1:1:length(Columns_of_interest)
 
     if SELECT_Fitting_Technique == 1
 
-        % y=filtered_data_new.TestWTPre.WindSpeed(idx_TestWTPre_NacPos{n})';
-        % x=filtered_data_new.TestWTPre.PowerActive(idx_TestWTPre_NacPos{n})';
-
         coefficients_vt2 = polyfit(x, y, 3);
         xFit = linspace(0, base_kW*1.05, 1000);
         yFit = polyval(coefficients_vt2 , xFit);
-        Coef_vt{k}=coefficients_vt2;
+        Coef_TestWTindexing{k}=coefficients_vt2;
 
     elseif SELECT_Fitting_Technique == 2
-
-        % y=filtered_data_new.TestWTPre.WindSpeed(idx_TestWTPre_NacPos{n})';
-        % x=filtered_data_new.TestWTPre.PowerActive(idx_TestWTPre_NacPos{n})';
 
         % slmengine function for piecewise linear
         slm=slmengine(x,y,'plot','off','kn',power_edges(1):pow_separation_per_bin:power_edges(end),'deg',1);
         
-        slmcoef{k} = slm.coef;
-        slmcoef{k}(end)=25; %%% <<<<<<<<<<<<< MANUAL OVERRIDE OF FINAL "POINT OF BEST FIT"
+        slmcoef_TestWTindexing{k} = slm.coef;
+        % slmcoef{k}(end)=25; %%% <<<<<<<<<<<<< MANUAL OVERRIDE OF FINAL "POINT OF BEST FIT"
 
         % Using interp1 as a lookup table for the xFit and yfits
         xFit=linspace(0, base_kW*1.05, 1000);
-        yFit = interp1(power_edges,slmcoef{k}',xFit);
+        yFit = interp1(power_edges,slmcoef_TestWTindexing{k}',xFit);
 
     end
 
     if SELECT_Fitting_Technique == 1
-        U_TestWT_bestfit{k} = polyval(Coef_vt{k},x);
+        U_TestWT_bestfit{k} = polyval(Coef_TestWTindexing{k},x);
     elseif SELECT_Fitting_Technique == 2
-        U_TestWT_bestfit{k} = interp1(power_edges,slmcoef{k}',x);
+        U_TestWT_bestfit{k} = interp1(power_edges,slmcoef_TestWTindexing{k}',x);
     end
 
     figure(17)
@@ -1398,222 +1392,395 @@ for k=1:1:length(Columns_of_interest)
     ylabel 'U (Control turbine) [m/s]'
     xlabel 'P_T [W]'
     title 'Inverted power curve P_T to U_{TestWT}'
-
 end
 
 figure(18)
-plot(U_TestWT_bestfit{1},filtered_data_new.TestWTPre.PowerActive(idx_TestWTPre_NacPos{Columns_of_interest(1)}),'.')
+plot(U_TestWT_bestfit{1},filtered_data_new.TestWTPre.PowerActive(idx_TestWTPre_NacPos{Columns_of_interest(1)})/base_kW,'.')
 hold on
 for k=2:length(Columns_of_interest)
-    plot(U_TestWT_bestfit{k},filtered_data_new.TestWTPre.PowerActive(idx_TestWTPre_NacPos{Columns_of_interest(k)}),'.')
+    plot(U_TestWT_bestfit{k},filtered_data_new.TestWTPre.PowerActive(idx_TestWTPre_NacPos{Columns_of_interest(k)})/base_kW,'.')
 end
 hold off
 grid on
-xlabel 'U [m/s]'
-ylabel 'P'
-title 'All the lines of best fit'
+xlabel 'U_{T meas} [m/s]'
+ylabel 'P_{T meas} [pu]'
+title 'Polyfit'
 
+%% Now find coefficients to link control turbine power to speed
 
-%% Baseline power curves VT PT
+% New onwards from 1/9/23 - having been away from P2P and come back, I
+% think there were some errors in my implementation. 
 
-% Much the same as the previous section
+% Basically, by linking the relationship of control turbine to control wind
+% speed, it is possible to establish its own power curve. Then, to make it
+% relevant to the estimated test turbine power, employ the "c" coefficient.
 
-clc; clear VT
-
-PT_clean=1:2625;
-
-for k=1:1:length(Columns_of_interest)
-    n=Columns_of_interest(k); % ie 270 - 280 degrees
-    
-    if SELECT_Fitting_Technique == 1
-        VT_clean{k} = polyval(Coef_vt{k} , PT_clean);
-        VT{k} = polyval(Coef_vt{k} , P_TestWT_estimated{k});
-    elseif SELECT_Fitting_Technique == 2
-        VT_clean{k} = interp1(power_edges,slmcoef{k}',PT_clean);
-        VT{k} = interp1(power_edges,slmcoef{k}',P_TestWT_estimated{k});
-    end
-end
-
-figure(19)
-plot(VT{1},P_TestWT_estimated{1},'o')
-hold on
-for k=2:length(Columns_of_interest)
-plot(VT{k},P_TestWT_estimated{k},'o')
-end
-% % % 
-set(gca,'ColorOrderIndex',1)
-% % % 
-plot(VT_clean{1},PT_clean,'LineWidth',1)
-for k=2:length(Columns_of_interest)
-plot(VT_clean{k},PT_clean,'LineWidth',1)
-end
-hold off
-grid on
-xlabel 'VT [m/s]'
-ylabel 'P_T [kW]'
-title 'V_T to P_T for each directional bin'
-
-
-%% Replicating figure from WindGuard slide 13 (VT versus PTmeasured) (training period only)
-
-% PTmeas is extracted using the same indices as VT, that is to say idx_ControlWTPre_NacPos
 
 clc
-clear x PTmeas VT_new
 
-for k=1:1:length(Columns_of_interest)
-    n=Columns_of_interest(k); % ie 270 - 280 degrees
-    PTmeas{k} = filtered_data_new.TestWTPre.PowerActive(idx_ControlWTPre_NacPos{n}); 
-end
-
-figure(21)
-plot(VT{1},PTmeas{1},'.') 
-hold on
-for k=2:1:length(Columns_of_interest)
-    plot(VT{k},PTmeas{k},'.') 
-end
-hold off
-grid on
-xlabel 'V_T [m/s]'
-ylabel 'P_{Tmeas} [kW]'
-
-%% Obtain power curve using both PTmeasured and PTestimated
-
-% Step 1: Repeat piecewise linear fit for PTmeasured
-% Step 2: Plot power curves for: 
-    % PC reproduced: VT / P_Tmeas (LINE OF BEST FIT)
-    % PC assumed: VT / P_TestWT_estimated{k}
-
+clear U_ControlWT_bestfit x y Coef_ControlWTindexing
 
 for k=1:1:length(Columns_of_interest)
     n=Columns_of_interest(k);
 
-    y=VT{k}';
-    x=PTmeas{k}';
+    y=filtered_data_new.ControlWTPre.WindSpeed(idx_ControlWTPre_NacPos{n})';
+    x=filtered_data_new.ControlWTPre.PowerActive(idx_ControlWTPre_NacPos{n})';
 
     if SELECT_Fitting_Technique == 1
-
-        % y=filtered_data_new.TestWTPre.WindSpeed(idx_TestWTPre_NacPos{n})';
-        % x=filtered_data_new.TestWTPre.PowerActive(idx_TestWTPre_NacPos{n})';
 
         coefficients_vt2 = polyfit(x, y, 3);
         xFit = linspace(0, base_kW*1.05, 1000);
         yFit = polyval(coefficients_vt2 , xFit);
-        Coef_VT_PMeas{k}=coefficients_vt2;
+        Coef_ControlWTindexing{k}=coefficients_vt2;
 
     elseif SELECT_Fitting_Technique == 2
 
-        % y=filtered_data_new.TestWTPre.WindSpeed(idx_TestWTPre_NacPos{n})';
-        % x=filtered_data_new.TestWTPre.PowerActive(idx_TestWTPre_NacPos{n})';
-
         % slmengine function for piecewise linear
         slm=slmengine(x,y,'plot','off','kn',power_edges(1):pow_separation_per_bin:power_edges(end),'deg',1);
-        
-        slmcoef_VT_PMeas{k} = slm.coef;
-        slmcoef_VT_PMeas{k}(end)=25; %%% <<<<<<<<<<<<< MANUAL OVERRIDE OF FINAL "POINT OF BEST FIT"
+
+        slmcoef_ControlWTindexing{k} = slm.coef;
+        % slmcoef{k}(end)=25; %%% <<<<<<<<<<<<< MANUAL OVERRIDE OF FINAL "POINT OF BEST FIT"
 
         % Using interp1 as a lookup table for the xFit and yfits
         xFit=linspace(0, base_kW*1.05, 1000);
-        yFit = interp1(power_edges,slmcoef_VT_PMeas{k}',xFit);
+        yFit = interp1(power_edges,slmcoef_ControlWTindexing{k}',xFit);
 
     end
 
     if SELECT_Fitting_Technique == 1
-        U_TestWT_bestfit{k} = polyval(Coef_vt{k},x);
+        U_ControlWT_bestfit{k} = polyval(Coef_ControlWTindexing{k},x);
     elseif SELECT_Fitting_Technique == 2
-        U_TestWT_bestfit{k} = interp1(power_edges,slmcoef_VT_PMeas{k}',x);
+        U_ControlWT_bestfit{k} = interp1(power_edges,slmcoef_ControlWTindexing{k}',x);
     end
 
-    figure(22)
-    plot(x,y,'.')
+    figure(17)
+    plot(x,filtered_data_new.ControlWTPre.WindSpeed(idx_ControlWTPre_NacPos{n}),'.')
     hold on
     plot(xFit,yFit,'r','LineWidth',1)
     hold off
     grid on
-    ylabel 'V_T [m/s]'
-    xlabel 'P_{Tmeas} [kW]'
-    title 'Checking best fit of inverse power curve P_{Tmeas} to V_T'
-
+    ylabel 'U (Control turbine) [m/s]'
+    xlabel 'P_T [W]'
+    title 'Inverted power curve P_T to U_{ControlWT}'
 end
+
+figure(18)
+plot(U_ControlWT_bestfit{1},filtered_data_new.ControlWTPre.PowerActive(idx_ControlWTPre_NacPos{Columns_of_interest(1)})/base_kW,'.')
+hold on
+for k=2:length(Columns_of_interest)
+    plot(U_ControlWT_bestfit{k},filtered_data_new.ControlWTPre.PowerActive(idx_ControlWTPre_NacPos{Columns_of_interest(k)})/base_kW,'.')
+end
+hold off
+grid on
+xlabel 'U_{T meas} [m/s]'
+ylabel 'P_{T meas} [pu]'
+title 'Polyfit'
+
 
 %%
 
+
+P_plotting = 1:5:2625;
+
 for k=1:1:length(Columns_of_interest)
     n=Columns_of_interest(k); % ie 270 - 280 degrees
-    
+
     if SELECT_Fitting_Technique == 1
-        VT_for_PTestim_clean{k} = polyval(Coef_vt{k},PT_clean);
-        VT_for_PTmeas_clean{k} = polyval(Coef_VT_PMeas{k},PT_clean);
+        VT_for_PTestim{k} = polyval(Coef_ControlWTindexing{k},P_plotting); % Coef_ControlWTindexing
+        P_T_estimated{k} = P_plotting*c(k);
+        VT_for_PTmeas{k} = polyval(Coef_TestWTindexing{k},P_plotting); % Coef_TestWTindexing
+        P_T_meas{k} = P_plotting;    
     elseif SELECT_Fitting_Technique == 2
-        VT_for_PTestim_clean{k} = interp1(power_edges,slmcoef{k}',PT_clean);
-        VT_for_PTmeas_clean{k} = interp1(power_edges,slmcoef_VT_PMeas{k}',PT_clean);
+        VT_for_PTestim{k} = interp1(power_edges,slmcoef_ControlWTindexing{k}',P_plotting);
+        P_T_estimated{k} = P_plotting*c(k);
+        VT_for_PTmeas{k} = interp1(power_edges,slmcoef_TestWTindexing{k}',P_plotting);
+        P_T_meas{k} = P_plotting;  
     end
 end
 
 
 % figure(23)
-% plot(VT{1},PTmeas{1},'.') 
+% plot(VT_for_PTmeas{1},P_T_meas{1},'.') 
 % hold on
 % for k=2:1:length(Columns_of_interest)
-%     plot(VT{k},PTmeas{k},'.') 
+%     plot(VT_for_PTmeas{k},P_T_meas{k},'.') 
 % end
 % % % % % 
 % set(gca,'ColorOrderIndex',1)
-% plot(VT{1},P_TestWT_estimated{1},'.') 
+% plot(VT_for_PTestim{1},P_T_estimated{1},'o') 
 % for k=2:1:length(Columns_of_interest)
-%     plot(VT{k},P_TestWT_estimated{k},'.') 
+%     plot(VT_for_PTestim{k},P_T_estimated{k},'o') 
 % end
 % % % % % 
 % hold off
 % grid on
 % xlabel 'V_T [m/s]'
-% ylabel 'P_{T} [kW]'
+% ylabel 'P_Testim and P_Tmeas [kW]'
+% title 'V_T to P_T for each directional bin'
 
 
-
-figure(23)
-plot(VT_for_PTestim_clean{1},PT_clean,'--','LineWidth',1)
-hold on
-for k=2:length(Columns_of_interest)
-plot(VT_for_PTestim_clean{k},PT_clean,'--','LineWidth',1)
-end
-% % % % 
-set(gca,'ColorOrderIndex',1)
-% % % % 
-plot(VT_for_PTmeas_clean{1},PT_clean,'-.','LineWidth',1)
-for k=2:length(Columns_of_interest)
-plot(VT_for_PTmeas_clean{k},PT_clean,'-.','LineWidth',1)
-end
-hold off
-grid on
-xlabel 'VT [m/s]'
-ylabel 'P_Testim and P_Tmeas [kW]'
-title 'V_T to P_T for each directional bin'
-
-
-%%
 
 for k=1:1:length(Columns_of_interest)
 
-    
+
     figure(24)
-    plot(VT_for_PTestim_clean{k},PT_clean,'--','LineWidth',1)
+    plot(VT_for_PTmeas{k},P_T_meas{k}/base_kW,'--','LineWidth',1)
     hold on
-    plot(VT_for_PTmeas_clean{k},PT_clean,'-.','LineWidth',1)
+    plot(VT_for_PTestim{k},P_T_estimated{k}/base_kW,'-.','LineWidth',1)
     hold off
     grid on
     xlabel 'VT [m/s]'
-    ylabel 'P_{Testim} and P_{Tmeas} [kW]'
+    ylabel 'P_{Testim} and P_{Tmeas} [pu]'
 
     str = sprintf('V_T to P_T for nacelle directional bin %d to %d ', nacelle_pos_edges(Columns_of_interest(k)), nacelle_pos_edges(Columns_of_interest(k)+1));
     title(str)
 
     % title 'V_T to P_T for each directional bin'
-    legend 'PT estimated' 'PT measured' location northwest
+    legend 'PT measured' 'PT estimated' location northwest
 
 end
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%% 
+
+% Stuff below probably wrong but kept until we can be sure! 
+
+%  Commented out on 1/9/23
+
+%% Baseline power curves VT PT
+
+% % Much the same as the previous section
+% 
+% clc; clear VT
+% 
+% PT_clean=1:2625;
+% 
+% for k=1:1:length(Columns_of_interest)
+%     n=Columns_of_interest(k); % ie 270 - 280 degrees
+% 
+%     if SELECT_Fitting_Technique == 1
+%         VT_clean{k} = polyval(Coef_TestWTindexing{k} , PT_clean);
+%         VT{k} = polyval(Coef_TestWTindexing{k} , P_TestWT_estimated{k});
+%     elseif SELECT_Fitting_Technique == 2
+%         VT_clean{k} = interp1(power_edges,slmcoef_TestWTindexing{k}',PT_clean);
+%         VT{k} = interp1(power_edges,slmcoef_TestWTindexing{k}',P_TestWT_estimated{k});
+%     end
+% end
+% 
+% figure(19)
+% plot(VT{1},P_TestWT_estimated{1},'o')
+% hold on
+% for k=2:length(Columns_of_interest)
+% plot(VT{k},P_TestWT_estimated{k},'o')
+% end
+% % % % 
+% set(gca,'ColorOrderIndex',1)
+% % % % 
+% plot(VT_clean{1},PT_clean,'LineWidth',1)
+% for k=2:length(Columns_of_interest)
+% plot(VT_clean{k},PT_clean,'LineWidth',1)
+% end
+% hold off
+% grid on
+% xlabel 'VT [m/s]'
+% ylabel 'P_T [kW]'
+% title 'V_T to P_T for each directional bin'
+% 
+% 
+% %% Replicating figure from WindGuard slide 13 (VT versus PTmeasured) (training period only)
+% 
+% % PTmeas is extracted using the same indices as VT, that is to say idx_ControlWTPre_NacPos
+% 
+% clc
+% clear x PTmeas VT_new
+% 
+% for k=1:1:length(Columns_of_interest)
+%     n=Columns_of_interest(k); % ie 270 - 280 degrees
+%     PTmeas{k} = filtered_data_new.TestWTPre.PowerActive(idx_ControlWTPre_NacPos{n}); 
+% end
+% 
+% figure(21)
+% plot(VT{1},PTmeas{1},'.') 
+% hold on
+% for k=2:1:length(Columns_of_interest)
+%     plot(VT{k},PTmeas{k},'.') 
+% end
+% hold off
+% grid on
+% xlabel 'V_T [m/s]'
+% ylabel 'P_{Tmeas} [kW]'
+% 
+% %% Obtain power curve using both PTmeasured and PTestimated
+% 
+% % Step 1: Repeat piecewise linear fit for PTmeasured
+% % Step 2: Plot power curves for: 
+%     % PC reproduced: VT / P_Tmeas (LINE OF BEST FIT)
+%     % PC assumed: VT / P_TestWT_estimated{k}
+% 
+% 
+% for k=1:1:length(Columns_of_interest)
+%     n=Columns_of_interest(k);
+% 
+%     y=VT{k}';
+%     x=PTmeas{k}';
+% 
+%     if SELECT_Fitting_Technique == 1
+% 
+%         coefficients_vt2 = polyfit(x, y, 3);
+%         xFit = linspace(0, base_kW*1.05, 1000);
+%         yFit = polyval(coefficients_vt2 , xFit);
+%         Coef_VT_PMeas{k}=coefficients_vt2;
+% 
+%     elseif SELECT_Fitting_Technique == 2
+% 
+%         % slmengine function for piecewise linear
+%         slm=slmengine(x,y,'plot','off','kn',power_edges(1):pow_separation_per_bin:power_edges(end),'deg',1);
+% 
+%         slmcoef_VT_PMeas{k} = slm.coef;
+%         slmcoef_VT_PMeas{k}(end)=25; %%% <<<<<<<<<<<<< MANUAL OVERRIDE OF FINAL "POINT OF BEST FIT"
+% 
+%         % Using interp1 as a lookup table for the xFit and yfits
+%         xFit=linspace(0, base_kW*1.05, 1000);
+%         yFit = interp1(power_edges,slmcoef_VT_PMeas{k}',xFit);
+% 
+%     end
+% 
+%     if SELECT_Fitting_Technique == 1
+%         U_TestWT_bestfit{k} = polyval(Coef_TestWTindexing{k},x);
+%     elseif SELECT_Fitting_Technique == 2
+%         U_TestWT_bestfit{k} = interp1(power_edges,slmcoef_VT_PMeas{k}',x);
+%     end
+% 
+%     figure(22)
+%     plot(x,y,'.')
+%     hold on
+%     plot(xFit,yFit,'r','LineWidth',1)
+%     hold off
+%     grid on
+%     ylabel 'V_T [m/s]'
+%     xlabel 'P_{Tmeas} [kW]'
+%     title 'Checking best fit of inverse power curve P_{Tmeas} to V_T'
+% 
+% end
+% 
+% %%
+% 
+% for k=1:1:length(Columns_of_interest)
+%     n=Columns_of_interest(k); % ie 270 - 280 degrees
+% 
+%     if SELECT_Fitting_Technique == 1
+%         VT_for_PTestim_clean{k} = polyval(Coef_TestWTindexing{k},PT_clean);
+%         VT_for_PTmeas_clean{k} = polyval(Coef_VT_PMeas{k},PT_clean);
+%     elseif SELECT_Fitting_Technique == 2
+%         VT_for_PTestim_clean{k} = interp1(power_edges,slmcoef_TestWTindexing{k}',PT_clean);
+%         VT_for_PTmeas_clean{k} = interp1(power_edges,slmcoef_VT_PMeas{k}',PT_clean);
+%     end
+% end
+% 
+% 
+% % figure(23)
+% % plot(VT{1},PTmeas{1},'.') 
+% % hold on
+% % for k=2:1:length(Columns_of_interest)
+% %     plot(VT{k},PTmeas{k},'.') 
+% % end
+% % % % % % 
+% % set(gca,'ColorOrderIndex',1)
+% % plot(VT{1},P_TestWT_estimated{1},'.') 
+% % for k=2:1:length(Columns_of_interest)
+% %     plot(VT{k},P_TestWT_estimated{k},'.') 
+% % end
+% % % % % % 
+% % hold off
+% % grid on
+% % xlabel 'V_T [m/s]'
+% % ylabel 'P_{T} [kW]'
+% 
+% 
+% 
+% figure(23)
+% plot(VT_for_PTestim_clean{1},PT_clean,'--','LineWidth',1)
+% hold on
+% for k=2:length(Columns_of_interest)
+% plot(VT_for_PTestim_clean{k},PT_clean,'--','LineWidth',1)
+% end
+% % % % % 
+% set(gca,'ColorOrderIndex',1)
+% % % % % 
+% plot(VT_for_PTmeas_clean{1},PT_clean,'-.','LineWidth',1)
+% for k=2:length(Columns_of_interest)
+% plot(VT_for_PTmeas_clean{k},PT_clean,'-.','LineWidth',1)
+% end
+% hold off
+% grid on
+% xlabel 'VT [m/s]'
+% ylabel 'P_Testim and P_Tmeas [kW]'
+% title 'V_T to P_T for each directional bin'
+% 
+% 
+% %%
+% 
+% for k=1:1:length(Columns_of_interest)
+% 
+% 
+%     figure(24)
+%     plot(VT_for_PTestim_clean{k},PT_clean,'--','LineWidth',1)
+%     hold on
+%     plot(VT_for_PTmeas_clean{k},PT_clean,'-.','LineWidth',1)
+%     hold off
+%     grid on
+%     xlabel 'VT [m/s]'
+%     ylabel 'P_{Testim} and P_{Tmeas} [kW]'
+% 
+%     str = sprintf('V_T to P_T for nacelle directional bin %d to %d ', nacelle_pos_edges(Columns_of_interest(k)), nacelle_pos_edges(Columns_of_interest(k)+1));
+%     title(str)
+% 
+%     % title 'V_T to P_T for each directional bin'
+%     legend 'PT estimated' 'PT measured' location northwest
+% 
+% end
+% 
+% 
 
 
 
