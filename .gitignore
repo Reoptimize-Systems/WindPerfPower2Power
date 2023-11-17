@@ -4,3 +4,4 @@ Main.m
 *.asv
 *.asv
 test/test_windp2p_filterData.asv
+*.jpg

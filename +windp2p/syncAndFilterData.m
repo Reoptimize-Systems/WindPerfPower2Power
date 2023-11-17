@@ -59,7 +59,7 @@ options.CurtailedDailyTimesAndDurations = []; % CHECK my understanding is that t
 options.WindDirectionThreshNBins = 37; % Number of edges, ie 37 will create 36 bins of 10 degrees
 options.WindDirectionNumSamplesThresh = 1000; % Minimum number of samples required for each directional bin
 options.PowerRangeThreshBinSize = 5000; % The rough size in W for each power bin
-options.PowerRangeNumSamplesThresh = 45; %5 % (very low bc sample small at the mo) % Minimum number of samples required for each power bin
+options.PowerRangeNumSamplesThresh = 5; %5 % (very low bc sample small at the mo) % Minimum number of samples required for each power bin
 options.DataGapInfillThreshold = 5; % TBC, but I think that: This is the time between consecutive samples which is too big (anything smaller is OK)
 options.SyncronisedTimeStepSize = 1; % TBC
 options.TestTurbineTimeShift = 0; % manual shifting of time series
@@ -177,6 +177,29 @@ filtered_data.TestWTPost = strip_data_bad_inds_all_fields (filtered_data.TestWTP
 filtered_data.ControlWTPost = strip_data_bad_inds_all_fields (filtered_data.ControlWTPost, bad_inds);
 
 %%%%%%%%%% New addition end
+
+%%%%%%%%%% New addition, remove all negative powers
+
+% NOTE: This is to simplify the binning process later.
+
+bad_inds = find((filtered_data.ControlWTPre.PowerActive) < 0);
+filtered_data.ControlWTPre =  strip_data_bad_inds_all_fields (filtered_data.ControlWTPre, bad_inds);
+filtered_data.TestWTPre = strip_data_bad_inds_all_fields (filtered_data.TestWTPre, bad_inds);
+
+bad_inds = find((filtered_data.ControlWTPost.PowerActive) < 0);
+filtered_data.ControlWTPost = strip_data_bad_inds_all_fields (filtered_data.ControlWTPost, bad_inds);
+filtered_data.TestWTPost = strip_data_bad_inds_all_fields (filtered_data.TestWTPost, bad_inds);
+
+bad_inds = find((filtered_data.TestWTPre.PowerActive) < 0);
+filtered_data.TestWTPre = strip_data_bad_inds_all_fields (filtered_data.TestWTPre, bad_inds);
+filtered_data.ControlWTPre =  strip_data_bad_inds_all_fields (filtered_data.ControlWTPre, bad_inds);
+
+bad_inds = find((filtered_data.TestWTPost.PowerActive) < 0);
+filtered_data.TestWTPost = strip_data_bad_inds_all_fields (filtered_data.TestWTPost, bad_inds);
+filtered_data.ControlWTPost = strip_data_bad_inds_all_fields (filtered_data.ControlWTPost, bad_inds);
+
+%%%%%%%%%% New addition end
+
 
 
 
