@@ -29,7 +29,7 @@ IDX=0;
 
 %% FOR LOOPING. Select n, which determines which turbine pairs of "row_set" is being investigated
 
-for n= [1 16 21 22 35]      %[16 21 22 35]%1:50%1:length(data_info.All_combinations)
+for n= 1:50%[1 16 21 22 35]      %[16 21 22 35]%1:50%1:length(data_info.All_combinations)
 %% Load data (internal function used to protect sensitive IP)
 
     % close all
