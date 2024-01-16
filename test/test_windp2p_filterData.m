@@ -507,6 +507,7 @@ data.ControlWTPre.WindSpeed = data.ControlWTPre.WindSpeed(data.ControlWTPre.idx)
 % data.ControlWTPre.WTOperationState = data.ControlWTPre.WTOperationState(data.ControlWTPre.idx);
 % data.ControlWTPre.ProductionFactor = data.ControlWTPre.ProductionFactor(data.ControlWTPre.idx);
 data.ControlWTPre.WindDirection = data.ControlWTPre.WindDirection(data.ControlWTPre.idx);
+data.ControlWTPre.AirPressure = data.ControlWTPre.AirPressure(data.ControlWTPre.idx);
 
 % same again for TestWTpre
 data.TestWTPre.OmegaRotor = data.TestWTPre.OmegaRotor(data.TestWTPre.idx);
@@ -524,12 +525,13 @@ data.TestWTPre.WindSpeed = data.TestWTPre.WindSpeed(data.TestWTPre.idx);
 % data.TestWTPre.WTOperationState = data.TestWTPre.WTOperationState(data.TestWTPre.idx);
 % data.TestWTPre.ProductionFactor = data.TestWTPre.ProductionFactor(data.TestWTPre.idx);
 data.TestWTPre.WindDirection = data.TestWTPre.WindDirection(data.TestWTPre.idx);
+data.TestWTPre.AirPressure = data.TestWTPre.AirPressure(data.TestWTPre.idx);
 
 % Get date time
 DateTimeTestWTPre=datetime(1970,1,1,0,0,data.TestWTPre.Time);
-DateTimeTestWTPost=datetime(1970,1,1,0,0,data.TestWTPost.Time);
+% % % DateTimeTestWTPost=datetime(1970,1,1,0,0,data.TestWTPost.Time);
 DateTimeControlWTPre=datetime(1970,1,1,0,0,data.ControlWTPre.Time);
-DateTimeControlWTPost=datetime(1970,1,1,0,0,data.ControlWTPost.Time);
+% % % DateTimeControlWTPost=datetime(1970,1,1,0,0,data.ControlWTPost.Time);
 
 % figure(1)
 % ax1=subplot(5,2,1);
@@ -611,6 +613,22 @@ DateTimeControlWTPost=datetime(1970,1,1,0,0,data.ControlWTPost.Time);
 % linkaxes([ax1 ax3 ax5 ax7 ax9],'x')
 % linkaxes([ax2 ax4 ax6 ax8 ax10],'x')
 % sgtitle 'Comparing Control and Test turbines '
+
+% % % % %% WIND SPEED CORRECTION (Based on air density calculations based on temperature and pressure)
+
+% % % rho = pressure / (R * temperature) ; 5 Where R is the glas constant
+
+R_gas_constant = 287.05; % J/(kgK)
+
+data.ControlWTPre.AirDensity = data.ControlWTPre.AirPressure./(R_gas_constant * data.ControlWTPre.TemperatureExternal);
+data.TestWTPre.AirDensity = data.TestWTPre.AirPressure./(R_gas_constant * data.TestWTPre.TemperatureExternal);
+data.ControlWTPost.AirDensity = data.ControlWTPost.AirPressure./(R_gas_constant * data.ControlWTPost.TemperatureExternal);
+data.TestWTPost.AirDensity = data.TestWTPost.AirPressure./(R_gas_constant * data.TestWTPost.TemperatureExternal);
+
+data.ControlWTPre.WindSpeed = data.ControlWTPre.WindSpeed .* (data.ControlWTPre.AirDensity/1.225).^(1/3);
+data.TestWTPre.WindSpeed = data.TestWTPre.WindSpeed .* (data.TestWTPre.AirDensity/1.225).^(1/3);
+data.ControlWTPost.WindSpeed = data.ControlWTPost.WindSpeed .* (data.ControlWTPost.AirDensity/1.225).^(1/3);
+data.TestWTPost.WindSpeed = data.TestWTPost.WindSpeed .* (data.TestWTPost.AirDensity/1.225).^(1/3);
 
 %% Northing (pre filter, for info)
 % 
@@ -1910,7 +1928,7 @@ end
 for k=1:1:length(Columns_of_interest)
 
 
-    figure(24)
+    figure%(24)
     plot(VT_for_PTmeas{k},P_T_meas{k}/base_kW,'--','LineWidth',1)
     hold on
     plot(VT_for_PTestim{k},P_T_estimated{k}/base_kW,'-.','LineWidth',1)
