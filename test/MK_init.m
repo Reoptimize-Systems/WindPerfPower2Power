@@ -1,8 +1,15 @@
-clear;clc % forgive me for my sins!
+clc % forgive me for my sins!
+
+% clear only specific vars we need to clear
+clearvars filtered_data 
 
 %%
 
-filtered_data = windp2p.syncAndFilterData(data, 'WindDirectionNumSamplesThresh', 20, 'CurtailedFilterMethod','daily_times_and_durations');
+filtered_data = windp2p.syncAndFilterData( ...
+    data, ...
+    'WindDirectionNumSamplesThresh', 20, ...
+    'CurtailedFilterMethod','daily_times_and_durations' ...
+    );
 
 %%
 

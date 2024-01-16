@@ -15,7 +15,7 @@ clear data_info
 SELECT_DATA = 'WF3';
 % SELECT_DATA = 'WF4';
 
-folder_data_linking = fullfile (nextcloud_dir,'REOS-SHARED','Projects','INTERNAL--Power_to_Power_Comparison','MATLAB_code');
+folder_data_linking = fullfile (nextcloud_dir(),'REOS-SHARED','Projects','INTERNAL--Power_to_Power_Comparison','MATLAB_code');
 addpath(folder_data_linking)
 
 %% Load data (internal function used to protect sensitive IP)
