@@ -36,7 +36,7 @@ IDX = 0;
 
 %% FOR LOOPING. Select n, which determines which turbine pairs of "row_set" is being investigated
 
-for n= 1:50%[1 16 21 22 35]      %[16 21 22 35]%1:50%1:length(data_info.All_combinations)
+for n= 1:50 %[1 16 21 22 35]      %[16 21 22 35]%1:50%1:length(data_info.All_combinations)
 %% Load data (internal function used to protect sensitive IP)
 
     % close all
@@ -44,16 +44,16 @@ for n= 1:50%[1 16 21 22 35]      %[16 21 22 35]%1:50%1:length(data_info.All_comb
 IDX = IDX + 1;
 % % % n and IDX required for WF4
 
-[data, base_kW, ControlWT_S_No, TestWT_S_No] = windp2p_load_test_data(SELECT_DATA,'n',n,'IDX',IDX,'data_info',data_info);
+[data, base_kW, ControlWT_S_No, TestWT_S_No] = windp2p_load_test_data(SELECT_DATA, 'n', n, 'IDX', IDX, 'data_info', data_info);
 
-Combinations{IDX, 1}=ControlWT_S_No;
-Combinations{IDX, 2}=TestWT_S_No;
+Combinations{IDX, 1} = ControlWT_S_No;
+Combinations{IDX, 2} = TestWT_S_No;
 
 %% Plot input data
 
 % Finding values that are sampled at the same time for both turbines
-[data.TestWTPre.Time, data.TestWTPre.idx]=intersect(data.TestWTPre.Time, data.ControlWTPre.Time);
-[data.ControlWTPre.Time, data.ControlWTPre.idx]=intersect(data.ControlWTPre.Time, data.TestWTPre.Time);
+[data.TestWTPre.Time, data.TestWTPre.idx] = intersect(data.TestWTPre.Time, data.ControlWTPre.Time);
+[data.ControlWTPre.Time, data.ControlWTPre.idx] = intersect(data.ControlWTPre.Time, data.TestWTPre.Time);
 
 % Extract same indexed variables for remaining datasets
 data.ControlWTPre.OmegaRotor = data.ControlWTPre.OmegaRotor(data.ControlWTPre.idx);
