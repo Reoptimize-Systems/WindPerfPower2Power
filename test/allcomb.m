@@ -1,7 +1,4 @@
-function A = FCN_allcomb(varargin)
-
-% % Source: https://uk.mathworks.com/matlabcentral/fileexchange/10064-allcomb-varargin
-
+function A = allcomb(varargin)
 % ALLCOMB - All combinations
 %    B = ALLCOMB(A1,A2,A3,...,AN) returns all combinations of the elements
 %    in the arrays A1, A2, ..., and AN. B is P-by-N matrix where P is the product
@@ -44,6 +41,9 @@ function A = FCN_allcomb(varargin)
 %    See also NCHOOSEK, PERMS, NDGRID
 %         and NCHOOSE, COMBN, KTHCOMBN (Matlab Central FEX)
 
+% % Source: https://uk.mathworks.com/matlabcentral/fileexchange/10064-allcomb-varargin
+
+
 % Tested in Matlab R2015a and up
 % version 4.2 (apr 2018)
 % (c) Jos van der Geest
@@ -65,7 +65,7 @@ function A = FCN_allcomb(varargin)
 %     'matlab'. Thanks to Richard for pointing this out.
 % 4.2 (apr 2018) fixed some grammar mistakes in the help and comments
 
-narginchk(1,Inf) ;
+narginchk(1, Inf) ;
 NC = nargin ;
 
 % check if we should flip the order
@@ -84,7 +84,7 @@ if any(cellfun('isempty', args)) % check for empty inputs
     warning('ALLCOMB:EmptyInput','One of more empty inputs result in an empty output.') ;
     A = zeros(0, NC) ;
 elseif NC == 0 % no inputs
-    A = zeros(0,0) ; 
+    A = zeros(0, 0) ; 
 elseif NC == 1 % a single input, nothing to combine
     A = args{1}(:) ; 
 else
@@ -110,6 +110,6 @@ else
         % flip using ii if last column is changing fastest
         [A{ii}] = ndgrid(args{ii}) ;
         % concatenate
-        A = reshape(cat(NC+1,A{:}), [], NC) ;
+        A = reshape(cat(NC+1, A{:}), [], NC) ;
     end
 end

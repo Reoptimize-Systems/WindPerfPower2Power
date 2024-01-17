@@ -34,72 +34,72 @@ data_mapping = {'Time',                  'TimeStamp'; ...
                                           'FilePrefix', WTs(1), ...
                                           'Ext', ".nc", ...
                                           'Mapping', data_mapping, ...
-                                          'Start', datetime(2022,02,08), ...
-                                          'Stop', datetime(2022,04,06) ...
+                                          'Start', datetime(2022, 02, 08), ...
+                                          'Stop', datetime(2022, 04, 06) ...
                                         );
 
 [WT2, ~] = reos.sys.flowTurbine.loadRawData ( 'Folder', folder, ...
                                           'FilePrefix', WTs(2), ...
                                           'Ext', ".nc", ...
                                           'Mapping', data_mapping, ...
-                                          'Start', datetime(2022,02,08), ...
-                                          'Stop', datetime(2022,04,06) ...
+                                          'Start', datetime(2022, 02, 08), ...
+                                          'Stop', datetime(2022, 04, 06) ...
                                         );   
 
 [WT3, ~] = reos.sys.flowTurbine.loadRawData ( 'Folder', folder, ...
                                           'FilePrefix', WTs(3), ...
                                           'Ext', ".nc", ...
                                           'Mapping', data_mapping, ...
-                                          'Start', datetime(2022,02,08), ...
-                                          'Stop', datetime(2022,04,06) ...
+                                          'Start', datetime(2022, 02, 08), ...
+                                          'Stop', datetime(2022, 04, 06) ...
                                         );
 
 [WT4, ~] = reos.sys.flowTurbine.loadRawData ( 'Folder', folder, ...
                                           'FilePrefix', WTs(4), ...
                                           'Ext', ".nc", ...
                                           'Mapping', data_mapping, ...
-                                          'Start', datetime(2022,02,08), ...
-                                          'Stop', datetime(2022,04,06) ...
+                                          'Start', datetime(2022, 02, 08), ...
+                                          'Stop', datetime(2022, 04, 06) ...
                                         );   
 
 [WT5, ~] = reos.sys.flowTurbine.loadRawData ( 'Folder', folder, ...
                                           'FilePrefix', WTs(5), ...
                                           'Ext', ".nc", ...
                                           'Mapping', data_mapping, ...
-                                          'Start', datetime(2022,02,08), ...
-                                          'Stop', datetime(2022,04,06) ...
+                                          'Start', datetime(2022, 02, 08), ...
+                                          'Stop', datetime(2022, 04, 06) ...
                                         );
 
 [WT6, ~] = reos.sys.flowTurbine.loadRawData ( 'Folder', folder, ...
                                           'FilePrefix', WTs(6), ...
                                           'Ext', ".nc", ...
                                           'Mapping', data_mapping, ...
-                                          'Start', datetime(2022,02,08), ...
-                                          'Stop', datetime(2022,04,06) ...
+                                          'Start', datetime(2022, 02, 08), ...
+                                          'Stop', datetime(2022, 04, 06) ...
                                         );   
 
 [WT7, ~] = reos.sys.flowTurbine.loadRawData ( 'Folder', folder, ...
                                           'FilePrefix', WTs(7), ...
                                           'Ext', ".nc", ...
                                           'Mapping', data_mapping, ...
-                                          'Start', datetime(2022,02,08), ...
-                                          'Stop', datetime(2022,04,06) ...
+                                          'Start', datetime(2022, 02, 08), ...
+                                          'Stop', datetime(2022, 04, 06) ...
                                         );
 
 [WT8, ~] = reos.sys.flowTurbine.loadRawData ( 'Folder', folder, ...
                                           'FilePrefix', WTs(8), ...
                                           'Ext', ".nc", ...
                                           'Mapping', data_mapping, ...
-                                          'Start', datetime(2022,02,08), ...
-                                          'Stop', datetime(2022,04,06) ...
+                                          'Start', datetime(2022, 02, 08), ...
+                                          'Stop', datetime(2022, 04, 06) ...
                                         );   
 
 [WT9, ~] = reos.sys.flowTurbine.loadRawData ( 'Folder', folder, ...
                                           'FilePrefix', WTs(9), ...
                                           'Ext', ".nc", ...
                                           'Mapping', data_mapping, ...
-                                          'Start', datetime(2022,02,08), ...
-                                          'Stop', datetime(2022,04,06) ...
+                                          'Start', datetime(2022, 02, 08), ...
+                                          'Stop', datetime(2022, 04, 06) ...
                                         );
 
 
@@ -153,29 +153,29 @@ WT9.NacellePosition(isnan(WT9.NacellePosition))=0;
 
 %% Time domain plots
 
-Time1=datetime(1970,1,1,0,0,WT1.Time{1,1});
-Time2=datetime(1970,1,1,0,0,WT2.Time{1,1});
-Time3=datetime(1970,1,1,0,0,WT3.Time{1,1});
-Time4=datetime(1970,1,1,0,0,WT4.Time{1,1});
-Time5=datetime(1970,1,1,0,0,WT5.Time{1,1});
-Time6=datetime(1970,1,1,0,0,WT6.Time{1,1});
-Time7=datetime(1970,1,1,0,0,WT7.Time{1,1});
-Time8=datetime(1970,1,1,0,0,WT8.Time{1,1});
-Time9=datetime(1970,1,1,0,0,WT9.Time{1,1});
+Time1 = datetime(1970, 1, 1, 0, 0, WT1.Time{1, 1});
+Time2 = datetime(1970, 1, 1, 0, 0, WT2.Time{1, 1});
+Time3 = datetime(1970, 1, 1, 0, 0, WT3.Time{1, 1});
+Time4 = datetime(1970, 1, 1, 0, 0, WT4.Time{1, 1});
+Time5 = datetime(1970, 1, 1, 0, 0, WT5.Time{1, 1});
+Time6 = datetime(1970, 1, 1, 0, 0, WT6.Time{1, 1});
+Time7 = datetime(1970, 1, 1, 0, 0, WT7.Time{1, 1});
+Time8 = datetime(1970, 1, 1, 0, 0, WT8.Time{1, 1});
+Time9 = datetime(1970, 1, 1, 0, 0, WT9.Time{1, 1});
 
 
 figure(1)
-ax1=subplot(4,1,1);
-plot(Time1,WT1.PowerGenerator)
+ax1 = subplot(4, 1, 1);
+plot(Time1, WT1.PowerGenerator)
 hold on
-plot(Time2,WT2.PowerGenerator)
-plot(Time3,WT3.PowerGenerator)
-plot(Time4,WT4.PowerGenerator)
-plot(Time5,WT5.PowerGenerator)
-plot(Time6,WT6.PowerGenerator)
-plot(Time7,WT7.PowerGenerator)
-plot(Time8,WT8.PowerGenerator)
-plot(Time9,WT9.PowerGenerator)
+plot(Time2, WT2.PowerGenerator)
+plot(Time3, WT3.PowerGenerator)
+plot(Time4, WT4.PowerGenerator)
+plot(Time5, WT5.PowerGenerator)
+plot(Time6, WT6.PowerGenerator)
+plot(Time7, WT7.PowerGenerator)
+plot(Time8, WT8.PowerGenerator)
+plot(Time9, WT9.PowerGenerator)
 hold off
 grid on
 xlabel 'Time [s]'
@@ -183,51 +183,51 @@ ylabel 'P [W]'
 legend WT1 WT2 WT3 WT4 WT5 WT6 WT7 WT8 WT9
 title 'Power'
 %
-ax2=subplot(4,1,2);
-plot(Time1,WT1.OmegaGen)
+ax2 = subplot(4, 1, 2);
+plot(Time1, WT1.OmegaGen)
 hold on
-plot(Time2,WT2.OmegaGen)
-plot(Time3,WT3.OmegaGen)
-plot(Time4,WT4.OmegaGen)
-plot(Time5,WT5.OmegaGen)
-plot(Time6,WT6.OmegaGen)
-plot(Time7,WT7.OmegaGen)
-plot(Time8,WT8.OmegaGen)
-plot(Time9,WT9.OmegaGen)
+plot(Time2, WT2.OmegaGen)
+plot(Time3, WT3.OmegaGen)
+plot(Time4, WT4.OmegaGen)
+plot(Time5, WT5.OmegaGen)
+plot(Time6, WT6.OmegaGen)
+plot(Time7, WT7.OmegaGen)
+plot(Time8, WT8.OmegaGen)
+plot(Time9, WT9.OmegaGen)
 hold off
 grid on
 xlabel 'Time [s]'
 ylabel 'Gen Sp [rpm]'
 title 'Generator Speed'
 %
-ax3=subplot(4,1,3);
-plot(Time1,WT1.PitchAngleA)
+ax3 = subplot(4, 1, 3);
+plot(Time1, WT1.PitchAngleA)
 hold on
-plot(Time2,WT2.PitchAngleA)
-plot(Time3,WT3.PitchAngleA)
-plot(Time4,WT4.PitchAngleA)
-plot(Time5,WT5.PitchAngleA)
-plot(Time6,WT6.PitchAngleA)
-plot(Time7,WT7.PitchAngleA)
-plot(Time8,WT8.PitchAngleA)
-plot(Time9,WT9.PitchAngleA)
+plot(Time2, WT2.PitchAngleA)
+plot(Time3, WT3.PitchAngleA)
+plot(Time4, WT4.PitchAngleA)
+plot(Time5, WT5.PitchAngleA)
+plot(Time6, WT6.PitchAngleA)
+plot(Time7, WT7.PitchAngleA)
+plot(Time8, WT8.PitchAngleA)
+plot(Time9, WT9.PitchAngleA)
 hold off
 grid on
 xlabel 'Time [s]'
 ylabel 'Pitch [^{\circ}]'
 title 'Pitch'
 %
-ax4=subplot(4,1,4);
-plot(Time1,unwrap(WT1.NacellePosition))
+ax4 = subplot(4, 1, 4);
+plot(Time1, unwrap(WT1.NacellePosition))
 hold on
-plot(Time2,unwrap(WT2.NacellePosition))
-plot(Time3,unwrap(WT3.NacellePosition))
-plot(Time4,unwrap(WT4.NacellePosition))
-plot(Time5,unwrap(WT5.NacellePosition))
-plot(Time6,unwrap(WT6.NacellePosition))
-plot(Time7,unwrap(WT7.NacellePosition))
-plot(Time8,unwrap(WT8.NacellePosition))
-plot(Time9,unwrap(WT9.NacellePosition))
+plot(Time2, unwrap(WT2.NacellePosition))
+plot(Time3, unwrap(WT3.NacellePosition))
+plot(Time4, unwrap(WT4.NacellePosition))
+plot(Time5, unwrap(WT5.NacellePosition))
+plot(Time6, unwrap(WT6.NacellePosition))
+plot(Time7, unwrap(WT7.NacellePosition))
+plot(Time8, unwrap(WT8.NacellePosition))
+plot(Time9, unwrap(WT9.NacellePosition))
 hold off
 grid on
 xlabel 'Time [s]'
@@ -241,17 +241,17 @@ linkaxes([ax1 ax2 ax3 ax4],'x')
 
 
 figure(2)
-ax1=subplot(2,2,1);
-plot(Time1,cumtrapz(WT1.PowerGenerator),'LineWidth',2) 
+ax1 = subplot(2, 2, 1);
+plot(Time1, cumtrapz(WT1.PowerGenerator),'LineWidth',2) 
 hold on
-plot(Time2,cumtrapz(WT2.PowerGenerator),'LineWidth',2)
-plot(Time3,cumtrapz(WT3.PowerGenerator),'LineWidth',2)
-plot(Time4,cumtrapz(WT4.PowerGenerator),'LineWidth',2)
-plot(Time5,cumtrapz(WT5.PowerGenerator),'LineWidth',2)
-plot(Time6,cumtrapz(WT6.PowerGenerator),'LineWidth',2)
-plot(Time7,cumtrapz(WT7.PowerGenerator),'LineWidth',2) 
-plot(Time8,cumtrapz(WT8.PowerGenerator),'LineWidth',2)
-plot(Time9,cumtrapz(WT9.PowerGenerator),'LineWidth',2) 
+plot(Time2, cumtrapz(WT2.PowerGenerator),'LineWidth',2)
+plot(Time3, cumtrapz(WT3.PowerGenerator),'LineWidth',2)
+plot(Time4, cumtrapz(WT4.PowerGenerator),'LineWidth',2)
+plot(Time5, cumtrapz(WT5.PowerGenerator),'LineWidth',2)
+plot(Time6, cumtrapz(WT6.PowerGenerator),'LineWidth',2)
+plot(Time7, cumtrapz(WT7.PowerGenerator),'LineWidth',2) 
+plot(Time8, cumtrapz(WT8.PowerGenerator),'LineWidth',2)
+plot(Time9, cumtrapz(WT9.PowerGenerator),'LineWidth',2) 
 hold off
 grid on
 xlabel 'Time [s]'
@@ -259,51 +259,51 @@ ylabel 'P [W]'
 legend WT1 WT2 WT3 WT4 WT5 WT6 WT7 WT8 WT9
 title 'Power'
 %
-ax2=subplot(2,2,2);
-plot(Time1,cumtrapz(WT1.OmegaGen),'LineWidth',2)
+ax2 = subplot(2, 2, 2);
+plot(Time1, cumtrapz(WT1.OmegaGen),'LineWidth',2)
 hold on
-plot(Time2,cumtrapz(WT2.OmegaGen),'LineWidth',2)
-plot(Time3,cumtrapz(WT3.OmegaGen),'LineWidth',2)
-plot(Time4,cumtrapz(WT4.OmegaGen),'LineWidth',2)
-plot(Time5,cumtrapz(WT5.OmegaGen),'LineWidth',2)
-plot(Time6,cumtrapz(WT6.OmegaGen),'LineWidth',2)
-plot(Time7,cumtrapz(WT7.OmegaGen),'LineWidth',2)
-plot(Time8,cumtrapz(WT8.OmegaGen),'LineWidth',2)
-plot(Time9,cumtrapz(WT9.OmegaGen),'LineWidth',2)
+plot(Time2, cumtrapz(WT2.OmegaGen),'LineWidth',2)
+plot(Time3, cumtrapz(WT3.OmegaGen),'LineWidth',2)
+plot(Time4, cumtrapz(WT4.OmegaGen),'LineWidth',2)
+plot(Time5, cumtrapz(WT5.OmegaGen),'LineWidth',2)
+plot(Time6, cumtrapz(WT6.OmegaGen),'LineWidth',2)
+plot(Time7, cumtrapz(WT7.OmegaGen),'LineWidth',2)
+plot(Time8, cumtrapz(WT8.OmegaGen),'LineWidth',2)
+plot(Time9, cumtrapz(WT9.OmegaGen),'LineWidth',2)
 hold off
 grid on
 xlabel 'Time [s]'
 ylabel 'Gen Sp [rpm]'
 title 'Generator Speed'
 %
-ax3=subplot(2,2,3);
-plot(Time1,cumtrapz(WT1.PitchAngleA),'LineWidth',2)
+ax3 = subplot(2, 2, 3);
+plot(Time1, cumtrapz(WT1.PitchAngleA),'LineWidth',2)
 hold on
-plot(Time2,cumtrapz(WT2.PitchAngleA),'LineWidth',2)
-plot(Time3,cumtrapz(WT3.PitchAngleA),'LineWidth',2)
-plot(Time4,cumtrapz(WT4.PitchAngleA),'LineWidth',2)
-plot(Time5,cumtrapz(WT5.PitchAngleA),'LineWidth',2)
-plot(Time6,cumtrapz(WT6.PitchAngleA),'LineWidth',2)
-plot(Time7,cumtrapz(WT7.PitchAngleA),'LineWidth',2)
-plot(Time8,cumtrapz(WT8.PitchAngleA),'LineWidth',2)
-plot(Time9,cumtrapz(WT9.PitchAngleA),'LineWidth',2)
+plot(Time2, cumtrapz(WT2.PitchAngleA),'LineWidth',2)
+plot(Time3, cumtrapz(WT3.PitchAngleA),'LineWidth',2)
+plot(Time4, cumtrapz(WT4.PitchAngleA),'LineWidth',2)
+plot(Time5, cumtrapz(WT5.PitchAngleA),'LineWidth',2)
+plot(Time6, cumtrapz(WT6.PitchAngleA),'LineWidth',2)
+plot(Time7, cumtrapz(WT7.PitchAngleA),'LineWidth',2)
+plot(Time8, cumtrapz(WT8.PitchAngleA),'LineWidth',2)
+plot(Time9, cumtrapz(WT9.PitchAngleA),'LineWidth',2)
 hold off
 grid on
 xlabel 'Time [s]'
 ylabel 'Pitch [^{\circ}]'
 title 'Pitch'
 %
-ax4=subplot(2,2,4);
-plot(Time1,cumtrapz(unwrap(WT1.NacellePosition) ) ,'LineWidth',2)
+ax4 = subplot(2, 2, 4);
+plot(Time1, cumtrapz(unwrap(WT1.NacellePosition) ) ,'LineWidth',2)
 hold on
-plot(Time2,cumtrapz(unwrap(WT2.NacellePosition) ) ,'LineWidth',2)
-plot(Time3,cumtrapz(unwrap(WT3.NacellePosition) ) ,'LineWidth',2)
-plot(Time4,cumtrapz(unwrap(WT4.NacellePosition) ) ,'LineWidth',2)
-plot(Time5,cumtrapz(unwrap(WT5.NacellePosition) ) ,'LineWidth',2)
-plot(Time6,cumtrapz(unwrap(WT6.NacellePosition) ) ,'LineWidth',2)
-plot(Time7,cumtrapz(unwrap(WT7.NacellePosition) ) ,'LineWidth',2)
-plot(Time8,cumtrapz(unwrap(WT8.NacellePosition) ) ,'LineWidth',2)
-plot(Time9,cumtrapz(unwrap(WT9.NacellePosition) ) ,'LineWidth',2)
+plot(Time2, cumtrapz(unwrap(WT2.NacellePosition) ) ,'LineWidth',2)
+plot(Time3, cumtrapz(unwrap(WT3.NacellePosition) ) ,'LineWidth',2)
+plot(Time4, cumtrapz(unwrap(WT4.NacellePosition) ) ,'LineWidth',2)
+plot(Time5, cumtrapz(unwrap(WT5.NacellePosition) ) ,'LineWidth',2)
+plot(Time6, cumtrapz(unwrap(WT6.NacellePosition) ) ,'LineWidth',2)
+plot(Time7, cumtrapz(unwrap(WT7.NacellePosition) ) ,'LineWidth',2)
+plot(Time8, cumtrapz(unwrap(WT8.NacellePosition) ) ,'LineWidth',2)
+plot(Time9, cumtrapz(unwrap(WT9.NacellePosition) ) ,'LineWidth',2)
 hold off
 grid on
 xlabel 'Time [s]'
@@ -318,29 +318,29 @@ linkaxes([ax1 ax2 ax3 ax4],'x')
 
 
 figure(3)
-ax1=subplot(4,1,1);
-plot(Time1,abs(cumtrapz(WT1.PowerGenerator)-cumtrapz(WT2.PowerGenerator)),'LineWidth',2) % Best
+ax1 = subplot(4, 1, 1);
+plot(Time1, abs(cumtrapz(WT1.PowerGenerator)-cumtrapz(WT2.PowerGenerator)),'LineWidth',2) % Best
 hold on
-% plot(Time1,abs(cumtrapz(WT1.PowerGenerator)-cumtrapz(WT3.PowerGenerator)),'LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT1.PowerGenerator)-cumtrapz(WT4.PowerGenerator)),'LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT1.PowerGenerator)-cumtrapz(WT5.PowerGenerator)),'LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT1.PowerGenerator)-cumtrapz(WT6.PowerGenerator)),'LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT1.PowerGenerator)-cumtrapz(WT7.PowerGenerator)),'LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT2.PowerGenerator)-cumtrapz(WT3.PowerGenerator)),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT2.PowerGenerator)-cumtrapz(WT4.PowerGenerator)),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT2.PowerGenerator)-cumtrapz(WT5.PowerGenerator)),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT2.PowerGenerator)-cumtrapz(WT6.PowerGenerator)),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT2.PowerGenerator)-cumtrapz(WT7.PowerGenerator)),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT3.PowerGenerator)-cumtrapz(WT4.PowerGenerator)),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT3.PowerGenerator)-cumtrapz(WT5.PowerGenerator)),':','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT3.PowerGenerator)-cumtrapz(WT6.PowerGenerator)),':','LineWidth',2)  % Best
-% plot(Time1,abs(cumtrapz(WT3.PowerGenerator)-cumtrapz(WT7.PowerGenerator)),':','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT4.PowerGenerator)-cumtrapz(WT5.PowerGenerator)),':','LineWidth',2)  % Best
-% plot(Time1,abs(cumtrapz(WT4.PowerGenerator)-cumtrapz(WT6.PowerGenerator)),':','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT4.PowerGenerator)-cumtrapz(WT7.PowerGenerator)),'-.','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT5.PowerGenerator)-cumtrapz(WT6.PowerGenerator)),'-.','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT5.PowerGenerator)-cumtrapz(WT7.PowerGenerator)),'-.','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT6.PowerGenerator)-cumtrapz(WT7.PowerGenerator)),'-.','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT1.PowerGenerator)-cumtrapz(WT3.PowerGenerator)),'LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT1.PowerGenerator)-cumtrapz(WT4.PowerGenerator)),'LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT1.PowerGenerator)-cumtrapz(WT5.PowerGenerator)),'LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT1.PowerGenerator)-cumtrapz(WT6.PowerGenerator)),'LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT1.PowerGenerator)-cumtrapz(WT7.PowerGenerator)),'LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT2.PowerGenerator)-cumtrapz(WT3.PowerGenerator)),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT2.PowerGenerator)-cumtrapz(WT4.PowerGenerator)),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT2.PowerGenerator)-cumtrapz(WT5.PowerGenerator)),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT2.PowerGenerator)-cumtrapz(WT6.PowerGenerator)),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT2.PowerGenerator)-cumtrapz(WT7.PowerGenerator)),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT3.PowerGenerator)-cumtrapz(WT4.PowerGenerator)),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT3.PowerGenerator)-cumtrapz(WT5.PowerGenerator)),':','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT3.PowerGenerator)-cumtrapz(WT6.PowerGenerator)),':','LineWidth',2)  % Best
+% plot(Time1, abs(cumtrapz(WT3.PowerGenerator)-cumtrapz(WT7.PowerGenerator)),':','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT4.PowerGenerator)-cumtrapz(WT5.PowerGenerator)),':','LineWidth',2)  % Best
+% plot(Time1, abs(cumtrapz(WT4.PowerGenerator)-cumtrapz(WT6.PowerGenerator)),':','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT4.PowerGenerator)-cumtrapz(WT7.PowerGenerator)),'-.','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT5.PowerGenerator)-cumtrapz(WT6.PowerGenerator)),'-.','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT5.PowerGenerator)-cumtrapz(WT7.PowerGenerator)),'-.','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT6.PowerGenerator)-cumtrapz(WT7.PowerGenerator)),'-.','LineWidth',2) 
 hold off
 grid on
 xlabel 'Time [s]'
@@ -348,87 +348,87 @@ ylabel 'P [W]'
 legend 'abs(WT1-WT2)' 'abs(WT3-WT6)' 'abs(WT4-WT5)'
 title 'Power'
 %
-ax2=subplot(4,1,2);
-% plot(Time1,abs(cumtrapz(WT1.OmegaGen)-cumtrapz(WT2.OmegaGen)),'LineWidth',2)
-% plot(Time1,abs(cumtrapz(WT1.OmegaGen)-cumtrapz(WT3.OmegaGen)),'LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT1.OmegaGen)-cumtrapz(WT4.OmegaGen)),'LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT1.OmegaGen)-cumtrapz(WT5.OmegaGen)),'LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT1.OmegaGen)-cumtrapz(WT6.OmegaGen)),'LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT1.OmegaGen)-cumtrapz(WT7.OmegaGen)),'LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT2.OmegaGen)-cumtrapz(WT3.OmegaGen)),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT2.OmegaGen)-cumtrapz(WT4.OmegaGen)),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT2.OmegaGen)-cumtrapz(WT5.OmegaGen)),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT2.OmegaGen)-cumtrapz(WT6.OmegaGen)),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT2.OmegaGen)-cumtrapz(WT7.OmegaGen)),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT3.OmegaGen)-cumtrapz(WT4.OmegaGen)),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT3.OmegaGen)-cumtrapz(WT5.OmegaGen)),':','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT3.OmegaGen)-cumtrapz(WT6.OmegaGen)),':','LineWidth',2) % Best
+ax2 = subplot(4, 1, 2);
+% plot(Time1, abs(cumtrapz(WT1.OmegaGen)-cumtrapz(WT2.OmegaGen)),'LineWidth',2)
+% plot(Time1, abs(cumtrapz(WT1.OmegaGen)-cumtrapz(WT3.OmegaGen)),'LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT1.OmegaGen)-cumtrapz(WT4.OmegaGen)),'LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT1.OmegaGen)-cumtrapz(WT5.OmegaGen)),'LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT1.OmegaGen)-cumtrapz(WT6.OmegaGen)),'LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT1.OmegaGen)-cumtrapz(WT7.OmegaGen)),'LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT2.OmegaGen)-cumtrapz(WT3.OmegaGen)),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT2.OmegaGen)-cumtrapz(WT4.OmegaGen)),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT2.OmegaGen)-cumtrapz(WT5.OmegaGen)),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT2.OmegaGen)-cumtrapz(WT6.OmegaGen)),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT2.OmegaGen)-cumtrapz(WT7.OmegaGen)),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT3.OmegaGen)-cumtrapz(WT4.OmegaGen)),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT3.OmegaGen)-cumtrapz(WT5.OmegaGen)),':','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT3.OmegaGen)-cumtrapz(WT6.OmegaGen)),':','LineWidth',2) % Best
 hold on
-% plot(Time1,abs(cumtrapz(WT3.OmegaGen)-cumtrapz(WT7.OmegaGen)),':','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT4.OmegaGen)-cumtrapz(WT5.OmegaGen)),':','LineWidth',2)  % Best
-% plot(Time1,abs(cumtrapz(WT4.OmegaGen)-cumtrapz(WT6.OmegaGen)),':','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT4.OmegaGen)-cumtrapz(WT7.OmegaGen)),'-.','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT5.OmegaGen)-cumtrapz(WT6.OmegaGen)),'-.','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT5.OmegaGen)-cumtrapz(WT7.OmegaGen)),'-.','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(WT6.OmegaGen)-cumtrapz(WT7.OmegaGen)),'-.','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT3.OmegaGen)-cumtrapz(WT7.OmegaGen)),':','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT4.OmegaGen)-cumtrapz(WT5.OmegaGen)),':','LineWidth',2)  % Best
+% plot(Time1, abs(cumtrapz(WT4.OmegaGen)-cumtrapz(WT6.OmegaGen)),':','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT4.OmegaGen)-cumtrapz(WT7.OmegaGen)),'-.','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT5.OmegaGen)-cumtrapz(WT6.OmegaGen)),'-.','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT5.OmegaGen)-cumtrapz(WT7.OmegaGen)),'-.','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(WT6.OmegaGen)-cumtrapz(WT7.OmegaGen)),'-.','LineWidth',2) 
 hold off
 grid on
 xlabel 'Time [s]'
 ylabel 'Gen Sp [rpm]'
 title 'Generator Speed'
 %
-ax3=subplot(4,1,3);
-plot(Time1,abs(cumtrapz(WT1.PitchAngleA)-cumtrapz(WT2.PitchAngleA)),'LineWidth',2)
+ax3 = subplot(4, 1, 3);
+plot(Time1, abs(cumtrapz(WT1.PitchAngleA)-cumtrapz(WT2.PitchAngleA)),'LineWidth',2)
 hold on
-plot(Time1,abs(cumtrapz(WT1.PitchAngleA)-cumtrapz(WT3.PitchAngleA)),'LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT1.PitchAngleA)-cumtrapz(WT4.PitchAngleA)),'LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT1.PitchAngleA)-cumtrapz(WT5.PitchAngleA)),'LineWidth',2) % good
-plot(Time1,abs(cumtrapz(WT1.PitchAngleA)-cumtrapz(WT6.PitchAngleA)),'LineWidth',2) % good
-plot(Time1,abs(cumtrapz(WT1.PitchAngleA)-cumtrapz(WT7.PitchAngleA)),'LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT2.PitchAngleA)-cumtrapz(WT3.PitchAngleA)),'--','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT2.PitchAngleA)-cumtrapz(WT4.PitchAngleA)),'--','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT2.PitchAngleA)-cumtrapz(WT5.PitchAngleA)),'--','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT2.PitchAngleA)-cumtrapz(WT6.PitchAngleA)),'--','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT2.PitchAngleA)-cumtrapz(WT7.PitchAngleA)),'--','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT3.PitchAngleA)-cumtrapz(WT4.PitchAngleA)),'--','LineWidth',2) % good
-plot(Time1,abs(cumtrapz(WT3.PitchAngleA)-cumtrapz(WT5.PitchAngleA)),':','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT3.PitchAngleA)-cumtrapz(WT6.PitchAngleA)),':','LineWidth',2)  
-plot(Time1,abs(cumtrapz(WT3.PitchAngleA)-cumtrapz(WT7.PitchAngleA)),':','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT4.PitchAngleA)-cumtrapz(WT5.PitchAngleA)),':','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT4.PitchAngleA)-cumtrapz(WT6.PitchAngleA)),':','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT4.PitchAngleA)-cumtrapz(WT7.PitchAngleA)),'-.','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT5.PitchAngleA)-cumtrapz(WT6.PitchAngleA)),'-.','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT5.PitchAngleA)-cumtrapz(WT7.PitchAngleA)),'-.','LineWidth',2) 
-plot(Time1,abs(cumtrapz(WT6.PitchAngleA)-cumtrapz(WT7.PitchAngleA)),'-.','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT1.PitchAngleA)-cumtrapz(WT3.PitchAngleA)),'LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT1.PitchAngleA)-cumtrapz(WT4.PitchAngleA)),'LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT1.PitchAngleA)-cumtrapz(WT5.PitchAngleA)),'LineWidth',2) % good
+plot(Time1, abs(cumtrapz(WT1.PitchAngleA)-cumtrapz(WT6.PitchAngleA)),'LineWidth',2) % good
+plot(Time1, abs(cumtrapz(WT1.PitchAngleA)-cumtrapz(WT7.PitchAngleA)),'LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT2.PitchAngleA)-cumtrapz(WT3.PitchAngleA)),'--','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT2.PitchAngleA)-cumtrapz(WT4.PitchAngleA)),'--','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT2.PitchAngleA)-cumtrapz(WT5.PitchAngleA)),'--','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT2.PitchAngleA)-cumtrapz(WT6.PitchAngleA)),'--','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT2.PitchAngleA)-cumtrapz(WT7.PitchAngleA)),'--','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT3.PitchAngleA)-cumtrapz(WT4.PitchAngleA)),'--','LineWidth',2) % good
+plot(Time1, abs(cumtrapz(WT3.PitchAngleA)-cumtrapz(WT5.PitchAngleA)),':','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT3.PitchAngleA)-cumtrapz(WT6.PitchAngleA)),':','LineWidth',2)  
+plot(Time1, abs(cumtrapz(WT3.PitchAngleA)-cumtrapz(WT7.PitchAngleA)),':','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT4.PitchAngleA)-cumtrapz(WT5.PitchAngleA)),':','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT4.PitchAngleA)-cumtrapz(WT6.PitchAngleA)),':','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT4.PitchAngleA)-cumtrapz(WT7.PitchAngleA)),'-.','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT5.PitchAngleA)-cumtrapz(WT6.PitchAngleA)),'-.','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT5.PitchAngleA)-cumtrapz(WT7.PitchAngleA)),'-.','LineWidth',2) 
+plot(Time1, abs(cumtrapz(WT6.PitchAngleA)-cumtrapz(WT7.PitchAngleA)),'-.','LineWidth',2) 
 hold off
 grid on
 xlabel 'Time [s]'
 ylabel 'Pitch [^{\circ}]'
 title 'Pitch'
 %
-ax4=subplot(4,1,4);
-plot(Time1,abs(cumtrapz(unwrap(WT1.NacellePosition))-cumtrapz(unwrap(WT2.NacellePosition))),'LineWidth',2) 
+ax4 = subplot(4, 1, 4);
+plot(Time1, abs(cumtrapz(unwrap(WT1.NacellePosition))-cumtrapz(unwrap(WT2.NacellePosition))),'LineWidth',2) 
 hold on
-plot(Time1,abs(cumtrapz(unwrap(WT1.NacellePosition))-cumtrapz(unwrap(WT3.NacellePosition))),'LineWidth',2) 
-plot(Time1,abs(cumtrapz(unwrap(WT1.NacellePosition))-cumtrapz(unwrap(WT4.NacellePosition))),'LineWidth',2) % good
-% plot(Time1,abs(cumtrapz(unwrap(WT1.NacellePosition))-cumtrapz(unwrap(WT5.NacellePosition))),'LineWidth',2)
-% plot(Time1,abs(cumtrapz(unwrap(WT1.NacellePosition))-cumtrapz(unwrap(WT6.NacellePosition))),'LineWidth',2) 
-plot(Time1,abs(cumtrapz(unwrap(WT1.NacellePosition))-cumtrapz(unwrap(WT7.NacellePosition))),'LineWidth',2) % good
-% plot(Time1,abs(cumtrapz(unwrap(WT2.NacellePosition))-cumtrapz(unwrap(WT3.NacellePosition))),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(unwrap(WT2.NacellePosition))-cumtrapz(unwrap(WT4.NacellePosition))),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(unwrap(WT2.NacellePosition))-cumtrapz(unwrap(WT5.NacellePosition))),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(unwrap(WT2.NacellePosition))-cumtrapz(unwrap(WT6.NacellePosition))),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(unwrap(WT2.NacellePosition))-cumtrapz(unwrap(WT7.NacellePosition))),'--','LineWidth',2) 
-plot(Time1,abs(cumtrapz(unwrap(WT3.NacellePosition))-cumtrapz(unwrap(WT4.NacellePosition))),'--','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(unwrap(WT3.NacellePosition))-cumtrapz(unwrap(WT5.NacellePosition))),':','LineWidth',2) 
-plot(Time1,abs(cumtrapz(unwrap(WT3.NacellePosition))-cumtrapz(unwrap(WT6.NacellePosition))),':','LineWidth',2) 
-plot(Time1,abs(cumtrapz(unwrap(WT3.NacellePosition))-cumtrapz(unwrap(WT7.NacellePosition))),':','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(unwrap(WT4.NacellePosition))-cumtrapz(unwrap(WT5.NacellePosition))),':','LineWidth',2) 
-plot(Time1,abs(cumtrapz(unwrap(WT4.NacellePosition))-cumtrapz(unwrap(WT6.NacellePosition))),':','LineWidth',2) 
-plot(Time1,abs(cumtrapz(unwrap(WT4.NacellePosition))-cumtrapz(unwrap(WT7.NacellePosition))),'-.','LineWidth',2) % best
-% plot(Time1,abs(cumtrapz(unwrap(WT5.NacellePosition))-cumtrapz(unwrap(WT6.NacellePosition))),'-.','LineWidth',2) 
-% plot(Time1,abs(cumtrapz(unwrap(WT5.NacellePosition))-cumtrapz(unwrap(WT7.NacellePosition))),'-.','LineWidth',2) 
-plot(Time1,abs(cumtrapz(unwrap(WT6.NacellePosition))-cumtrapz(unwrap(WT7.NacellePosition))),'-.','LineWidth',2) 
+plot(Time1, abs(cumtrapz(unwrap(WT1.NacellePosition))-cumtrapz(unwrap(WT3.NacellePosition))),'LineWidth',2) 
+plot(Time1, abs(cumtrapz(unwrap(WT1.NacellePosition))-cumtrapz(unwrap(WT4.NacellePosition))),'LineWidth',2) % good
+% plot(Time1, abs(cumtrapz(unwrap(WT1.NacellePosition))-cumtrapz(unwrap(WT5.NacellePosition))),'LineWidth',2)
+% plot(Time1, abs(cumtrapz(unwrap(WT1.NacellePosition))-cumtrapz(unwrap(WT6.NacellePosition))),'LineWidth',2) 
+plot(Time1, abs(cumtrapz(unwrap(WT1.NacellePosition))-cumtrapz(unwrap(WT7.NacellePosition))),'LineWidth',2) % good
+% plot(Time1, abs(cumtrapz(unwrap(WT2.NacellePosition))-cumtrapz(unwrap(WT3.NacellePosition))),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(unwrap(WT2.NacellePosition))-cumtrapz(unwrap(WT4.NacellePosition))),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(unwrap(WT2.NacellePosition))-cumtrapz(unwrap(WT5.NacellePosition))),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(unwrap(WT2.NacellePosition))-cumtrapz(unwrap(WT6.NacellePosition))),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(unwrap(WT2.NacellePosition))-cumtrapz(unwrap(WT7.NacellePosition))),'--','LineWidth',2) 
+plot(Time1, abs(cumtrapz(unwrap(WT3.NacellePosition))-cumtrapz(unwrap(WT4.NacellePosition))),'--','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(unwrap(WT3.NacellePosition))-cumtrapz(unwrap(WT5.NacellePosition))),':','LineWidth',2) 
+plot(Time1, abs(cumtrapz(unwrap(WT3.NacellePosition))-cumtrapz(unwrap(WT6.NacellePosition))),':','LineWidth',2) 
+plot(Time1, abs(cumtrapz(unwrap(WT3.NacellePosition))-cumtrapz(unwrap(WT7.NacellePosition))),':','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(unwrap(WT4.NacellePosition))-cumtrapz(unwrap(WT5.NacellePosition))),':','LineWidth',2) 
+plot(Time1, abs(cumtrapz(unwrap(WT4.NacellePosition))-cumtrapz(unwrap(WT6.NacellePosition))),':','LineWidth',2) 
+plot(Time1, abs(cumtrapz(unwrap(WT4.NacellePosition))-cumtrapz(unwrap(WT7.NacellePosition))),'-.','LineWidth',2) % best
+% plot(Time1, abs(cumtrapz(unwrap(WT5.NacellePosition))-cumtrapz(unwrap(WT6.NacellePosition))),'-.','LineWidth',2) 
+% plot(Time1, abs(cumtrapz(unwrap(WT5.NacellePosition))-cumtrapz(unwrap(WT7.NacellePosition))),'-.','LineWidth',2) 
+plot(Time1, abs(cumtrapz(unwrap(WT6.NacellePosition))-cumtrapz(unwrap(WT7.NacellePosition))),'-.','LineWidth',2) 
 hold off
 grid on
 legend 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21

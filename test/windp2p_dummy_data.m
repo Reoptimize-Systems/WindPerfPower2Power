@@ -1,5 +1,4 @@
-function [data] = FCN_dummy_data(Troubleshoot)
-
+function [data] = windp2p_dummy_data(Troubleshoot)
 
     % %% Generate dummy pre data for testing
     data.ControlWTPre.Time = 0:1:400;

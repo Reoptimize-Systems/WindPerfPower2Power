@@ -32,19 +32,19 @@ legend 'unfiltered' 'filtered'
 %%
 
 figure(1)
-plot(data.ControlWTPre.Time,data.ControlWTPre.RPM,'x')
+plot(data.ControlWTPre.Time, data.ControlWTPre.RPM,'x')
 grid on
 
 figure(1)
-plot(data.ControlWTPre.Time,data.ControlWTPre.PowerActive,'x')
+plot(data.ControlWTPre.Time, data.ControlWTPre.PowerActive,'x')
 grid on
 
 figure(1)
-plot(data.ControlWTPre.Time,data.ControlWTPre.TemperatureExternal,'x')
+plot(data.ControlWTPre.Time, data.ControlWTPre.TemperatureExternal,'x')
 grid on
 
 figure(1)
-plot(data.ControlWTPre.Time,data.ControlWTPre.DirectionNacelle,'x')
+plot(data.ControlWTPre.Time, data.ControlWTPre.DirectionNacelle,'x')
 grid on
 
 figure(1)
@@ -54,7 +54,7 @@ grid on
 test_rand = (rand(size(data.ControlWTPost.Time)) - 0.5) .* 0.1;
 
 figure(1)
-plot(data.ControlWTPost.Time,test_rand)
+plot(data.ControlWTPost.Time, test_rand)
 grid on
 
 %% more plots under trial
@@ -62,17 +62,17 @@ grid on
 
 
 figure(222)
-ax1=subplot(2,1,1)
-plot(DateTimeControlWTPre,data.ControlWTPre.PowerActive)
+ax1 = subplot(2, 1, 1);
+plot(DateTimeControlWTPre, data.ControlWTPre.PowerActive)
 grid on
-ax2=subplot(2,1,2)
-% plot(DateTimeControlWTPre,data.ControlWTPre.ErrorCode) % ErrorCode seems to corrolate with dips in power
-% plot(DateTimeControlWTPre,data.ControlWTPre.WpsStatus) % WpsStatus seems to corrolate with shut downs
-% plot(DateTimeControlWTPre,data.ControlWTPre.WTOperationState) % WTOperationState seems to corrolate with dips in power
-plot(DateTimeControlWTPre,data.ControlWTPre.ProductionFactor) % ProductionFactor is unclear but much more variable
+ax2 = subplot(2, 1, 2);
+% plot(DateTimeControlWTPre, data.ControlWTPre.ErrorCode) % ErrorCode seems to corrolate with dips in power
+% plot(DateTimeControlWTPre, data.ControlWTPre.WpsStatus) % WpsStatus seems to corrolate with shut downs
+% plot(DateTimeControlWTPre, data.ControlWTPre.WTOperationState) % WTOperationState seems to corrolate with dips in power
+plot(DateTimeControlWTPre, data.ControlWTPre.ProductionFactor) % ProductionFactor is unclear but much more variable
 
 grid on
-linkaxes([ax1 ax2],'x')
+linkaxes([ax1 ax2], 'x')
 
 
 

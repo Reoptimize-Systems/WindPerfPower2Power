@@ -149,14 +149,14 @@ function Sim = ImportNC10min(FileName)
     % % % %     Start_Time = datetime(Start_Time,'ConvertFrom','datenum', 'Format', 'dd/MM/yyyy HH:mm:ss');
     % % % %     Start_Time = Start_Time - hours(hour(Start_Time)) - minutes(minute(Start_Time)) - seconds(second(Start_Time));
     % % % %     Start_Time = seconds(convertTo(Start_Time, 'posixtime'));
-    % % % %     tn = round((Sim.Time-Start_Time)/seconds(1))+1;
+    % % % %     tn = round((Sim.Time - Start_Time)/seconds(1))+1;
     % % % % 
     % % % %     if tn(1) ~= 1
     % % % %         row1 = Sim(1, :);
     % % % %         row1.Time = Start_Time;
     % % % %         row1(:, 2:end) = {nan};
     % % % %         Sim = [row1; Sim];
-    % % % %         tn = round((Sim.Time-Start_Time)/seconds(1))+1;
+    % % % %         tn = round((Sim.Time - Start_Time)/seconds(1))+1;
     % % % %     end
     % % % % 
     % % % %     ti = linspace(1, 86400, 86400);
