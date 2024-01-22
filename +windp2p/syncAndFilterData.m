@@ -63,8 +63,8 @@ options.PowerRangeNumSamplesThresh = 5; %5 % (very low bc sample small at the mo
 options.DataGapInfillThreshold = 5; % TBC, but I think that: This is the time between consecutive samples which is too big (anything smaller is OK)
 options.SyncronisedTimeStepSize = 1; % TBC
 options.TestTurbineTimeShift = 0; % manual shifting of time series
-options.OperationalPowerThreshold = 1e-4; % New variable to remove all P=0s 
-options.Troubleshooting = 0; % 1=plot sync filter only; 2=plot sync and op filter; ...
+options.OperationalPowerThreshold = 1e-4; % New variable to remove all P = 0s 
+options.Troubleshooting = 0; % 1 = plot sync filter only; 2 = plot sync and op filter; ...
 
 options = windp2p.parse_pv_pairs (options, varargin);
 
@@ -78,7 +78,7 @@ filtered_data = syncronize_data (data, 'ControlWTPre', 'TestWTPre', options);
 filtered_data = syncronize_data (data, 'ControlWTPost', 'TestWTPost', options);
 
 if options.Troubleshooting == 1
-    [~] = plot200(data,filtered_data);
+    [~] = plot200(data, filtered_data);
     sgtitle 'Plotting synchronisation filter'
 end
 
@@ -204,7 +204,7 @@ filtered_data.ControlWTPost = strip_data_bad_inds_all_fields (filtered_data.Cont
 
 
 if options.Troubleshooting == 2
-    [~] = plot200(data,filtered_data);
+    [~] = plot200(data, filtered_data);
     sgtitle 'Plotting synchronisation filter & operational method filter'
 end
 
@@ -295,7 +295,7 @@ filtered_data.ControlWTPost = leave_data_good_inds_all_fields (filtered_data.Con
 
 
 if options.Troubleshooting == 3
-    [~] = plot200(data,filtered_data);
+    [~] = plot200(data, filtered_data);
     sgtitle 'Plotting synchronisation filter, operational method filter & blade icing'
 end
 
@@ -319,7 +319,7 @@ good_directions = N_samples_ControlWTPre_DirectionNacelle >= options.WindDirecti
                     & N_samples_TestWTPre_DirectionNacelle >= options.WindDirectionNumSamplesThresh;
 
 % MK NOTE: "edges" does not exist, let's try to add this:
-edges=nacelle_direction_edges;
+edges = nacelle_direction_edges;
 
 % keep only data with these wind directions from all four data sets
 for ind = 1:numel(edges)-1 % For each bin
@@ -378,7 +378,7 @@ good_power = N_samples_ControlWTPre >= options.PowerRangeNumSamplesThresh ...
                     & N_samples_TestWTPre >= options.PowerRangeNumSamplesThresh;
 
 if options.Troubleshooting == 4
-    [~] = plot200(data,filtered_data);
+    [~] = plot200(data, filtered_data);
 end
 
 edges = power_bin_edges;
@@ -390,7 +390,7 @@ for ind = 1:numel(edges)-1
 
     if good_power(ind) == false
 
-        binstart=edges(ind);
+        binstart = edges(ind);
 
         bad_inds = find(filtered_data.ControlWTPre.PowerActive >= edges(ind) ...
                           & filtered_data.ControlWTPre.PowerActive <= edges(ind+1) );
@@ -412,7 +412,7 @@ for ind = 1:numel(edges)-1
 
         filtered_data.TestWTPost = strip_data_bad_inds_all_fields (filtered_data.TestWTPost, bad_inds);
 
-        % [~] = plot200(data,filtered_data);
+        % [~] = plot200(data, filtered_data);
         
     end
 
@@ -420,7 +420,7 @@ end
 
 
 if options.Troubleshooting == 5
-    [~] = plot200(data,filtered_data);
+    [~] = plot200(data, filtered_data);
     sgtitle 'Plotting impact of power binning'
 end
 
@@ -528,77 +528,77 @@ function turbine_data = strip_data_bad_inds_all_fields (turbine_data, bad_inds)
 
 end
 
-function test = plot200(data,filtered_data)
+function test = plot200(data, filtered_data)
 
     figure(200)
-    ax1=subplot(4,4,1);
-    plot(data.ControlWTPre.Time,data.ControlWTPre.RPM,'*r')
+    ax1 = subplot(4, 4, 1);
+    plot(data.ControlWTPre.Time, data.ControlWTPre.RPM,'*r')
     hold on
-    plot(filtered_data.ControlWTPre.Time,filtered_data.ControlWTPre.RPM,'ob')
+    plot(filtered_data.ControlWTPre.Time, filtered_data.ControlWTPre.RPM,'ob')
     hold off
     grid minor
     legend Unfiltered Filtered 
     ylabel 'RPM'
     % xlim([0 500])
     title 'ControlWTPre'
-    ax5=subplot(4,4,5);
-    plot(data.ControlWTPre.Time,data.ControlWTPre.PowerActive,'*r')
+    ax5 = subplot(4, 4, 5);
+    plot(data.ControlWTPre.Time, data.ControlWTPre.PowerActive,'*r')
     hold on
-    plot(filtered_data.ControlWTPre.Time,filtered_data.ControlWTPre.PowerActive,'ob')
+    plot(filtered_data.ControlWTPre.Time, filtered_data.ControlWTPre.PowerActive,'ob')
     hold off
     grid minor
     ylabel 'P'
     % xlim([0 500])
     % % % % % 
-    ax2=subplot(4,4,2);
-    plot(data.TestWTPre.Time,data.TestWTPre.RPM,'*r')
+    ax2 = subplot(4, 4, 2);
+    plot(data.TestWTPre.Time, data.TestWTPre.RPM,'*r')
     hold on
-    plot(filtered_data.TestWTPre.Time,filtered_data.TestWTPre.RPM,'ob')
+    plot(filtered_data.TestWTPre.Time, filtered_data.TestWTPre.RPM,'ob')
     hold off
     grid minor
     ylabel 'RPM'
     % xlim([0 500])
     title 'TestWTPre'
-    ax6=subplot(4,4,6);
-    plot(data.TestWTPre.Time,data.TestWTPre.PowerActive,'*r')
+    ax6 = subplot(4, 4, 6);
+    plot(data.TestWTPre.Time, data.TestWTPre.PowerActive,'*r')
     hold on
-    plot(filtered_data.TestWTPre.Time,filtered_data.TestWTPre.PowerActive,'ob')
+    plot(filtered_data.TestWTPre.Time, filtered_data.TestWTPre.PowerActive,'ob')
     hold off
     grid minor
     ylabel 'P'
     % xlim([0 500])
     % % % % % 
-    ax3=subplot(4,4,3);
-    plot(data.ControlWTPost.Time,data.ControlWTPost.RPM,'*r')
+    ax3 = subplot(4, 4, 3);
+    plot(data.ControlWTPost.Time, data.ControlWTPost.RPM,'*r')
     hold on
-    plot(filtered_data.ControlWTPost.Time,filtered_data.ControlWTPost.RPM,'ob')
+    plot(filtered_data.ControlWTPost.Time, filtered_data.ControlWTPost.RPM,'ob')
     hold off
     grid minor
     ylabel 'RPM'
     % xlim([0 500]+10000)
     title 'ControlWTPost'
-    ax7=subplot(4,4,7);
-    plot(data.ControlWTPost.Time,data.ControlWTPost.PowerActive,'*r')
+    ax7 = subplot(4, 4, 7);
+    plot(data.ControlWTPost.Time, data.ControlWTPost.PowerActive,'*r')
     hold on
-    plot(filtered_data.ControlWTPost.Time,filtered_data.ControlWTPost.PowerActive,'ob')
+    plot(filtered_data.ControlWTPost.Time, filtered_data.ControlWTPost.PowerActive,'ob')
     hold off
     grid minor
     ylabel 'P'
     % xlim([0 500]+10000)
     % % % % % 
-    ax4=subplot(4,4,4);
-    plot(data.TestWTPost.Time,data.TestWTPost.RPM,'*r')
+    ax4 = subplot(4, 4, 4);
+    plot(data.TestWTPost.Time, data.TestWTPost.RPM,'*r')
     hold on
-    plot(filtered_data.TestWTPost.Time,filtered_data.TestWTPost.RPM,'ob')
+    plot(filtered_data.TestWTPost.Time, filtered_data.TestWTPost.RPM,'ob')
     hold off
     grid minor
     ylabel 'RPM'
     % xlim([0 500]+10000)
     title 'TestWTPost'
-    ax8=subplot(4,4,8);
-    plot(data.TestWTPost.Time,data.TestWTPost.PowerActive,'*r')
+    ax8 = subplot(4, 4, 8);
+    plot(data.TestWTPost.Time, data.TestWTPost.PowerActive,'*r')
     hold on
-    plot(filtered_data.TestWTPost.Time,filtered_data.TestWTPost.PowerActive,'ob')
+    plot(filtered_data.TestWTPost.Time, filtered_data.TestWTPost.PowerActive,'ob')
     hold off
     grid minor
     ylabel 'P'
@@ -607,74 +607,74 @@ function test = plot200(data,filtered_data)
     %
     %
     %
-    ax9=subplot(4,4,9);
-    plot(data.ControlWTPre.Time,data.ControlWTPre.TemperatureExternal,'*r')
+    ax9 = subplot(4, 4, 9);
+    plot(data.ControlWTPre.Time, data.ControlWTPre.TemperatureExternal,'*r')
     hold on
-    plot(filtered_data.ControlWTPre.Time,filtered_data.ControlWTPre.TemperatureExternal,'ob')
+    plot(filtered_data.ControlWTPre.Time, filtered_data.ControlWTPre.TemperatureExternal,'ob')
     hold off
     grid minor
     legend Unfiltered Filtered 
     ylabel 'Temp Ext'
     % xlim([0 500])
     ylim([-5 20])
-    ax13=subplot(4,4,13);
-    plot(data.ControlWTPre.Time,data.ControlWTPre.DirectionNacelle,'*r')
+    ax13 = subplot(4, 4, 13);
+    plot(data.ControlWTPre.Time, data.ControlWTPre.DirectionNacelle,'*r')
     hold on
-    plot(filtered_data.ControlWTPre.Time,filtered_data.ControlWTPre.DirectionNacelle,'ob')
+    plot(filtered_data.ControlWTPre.Time, filtered_data.ControlWTPre.DirectionNacelle,'ob')
     hold off
     grid minor
     ylabel 'Dir Nacelle'
     % xlim([0 500])
     % % % % % 
-    ax10=subplot(4,4,10);
-    plot(data.TestWTPre.Time,data.TestWTPre.TemperatureExternal,'*r')
+    ax10 = subplot(4, 4, 10);
+    plot(data.TestWTPre.Time, data.TestWTPre.TemperatureExternal,'*r')
     hold on
-    plot(filtered_data.TestWTPre.Time,filtered_data.TestWTPre.TemperatureExternal,'ob')
+    plot(filtered_data.TestWTPre.Time, filtered_data.TestWTPre.TemperatureExternal,'ob')
     hold off
     grid minor
     ylabel 'Temp Ext'
     % xlim([0 500])
     ylim([-5 20])
-    ax14=subplot(4,4,14);
-    plot(data.TestWTPre.Time,data.TestWTPre.DirectionNacelle,'*r')
+    ax14 = subplot(4, 4, 14);
+    plot(data.TestWTPre.Time, data.TestWTPre.DirectionNacelle,'*r')
     hold on
-    plot(filtered_data.TestWTPre.Time,filtered_data.TestWTPre.DirectionNacelle,'ob')
+    plot(filtered_data.TestWTPre.Time, filtered_data.TestWTPre.DirectionNacelle,'ob')
     hold off
     grid minor
     ylabel 'Dir Nacelle'
     % xlim([0 500])
     % % % % % 
-    ax11=subplot(4,4,11);
-    plot(data.ControlWTPost.Time,data.ControlWTPost.TemperatureExternal,'*r')
+    ax11 = subplot(4, 4, 11);
+    plot(data.ControlWTPost.Time, data.ControlWTPost.TemperatureExternal,'*r')
     hold on
-    plot(filtered_data.ControlWTPost.Time,filtered_data.ControlWTPost.TemperatureExternal,'ob')
+    plot(filtered_data.ControlWTPost.Time, filtered_data.ControlWTPost.TemperatureExternal,'ob')
     hold off
     grid minor
     ylabel 'Temp Ext'
     % xlim([0 500]+10000)
     ylim([-5 20])
-    ax15=subplot(4,4,15);
-    plot(data.ControlWTPost.Time,data.ControlWTPost.DirectionNacelle,'*r')
+    ax15 = subplot(4, 4, 15);
+    plot(data.ControlWTPost.Time, data.ControlWTPost.DirectionNacelle,'*r')
     hold on
-    plot(filtered_data.ControlWTPost.Time,filtered_data.ControlWTPost.DirectionNacelle,'ob')
+    plot(filtered_data.ControlWTPost.Time, filtered_data.ControlWTPost.DirectionNacelle,'ob')
     hold off
     grid minor
     ylabel 'Dir Nacelle'
     % xlim([0 500]+10000)
     % % % % % 
-    ax12=subplot(4,4,12);
-    plot(data.TestWTPost.Time,data.TestWTPost.TemperatureExternal,'*r')
+    ax12 = subplot(4, 4, 12);
+    plot(data.TestWTPost.Time, data.TestWTPost.TemperatureExternal,'*r')
     hold on
-    plot(filtered_data.TestWTPost.Time,filtered_data.TestWTPost.TemperatureExternal,'ob')
+    plot(filtered_data.TestWTPost.Time, filtered_data.TestWTPost.TemperatureExternal,'ob')
     hold off
     grid minor
     ylabel 'Temp Ext'
     % xlim([0 500]+10000)
     ylim([-5 20])
-    ax16=subplot(4,4,16);
-    plot(data.TestWTPost.Time,data.TestWTPost.DirectionNacelle,'*r')
+    ax16 = subplot(4, 4, 16);
+    plot(data.TestWTPost.Time, data.TestWTPost.DirectionNacelle,'*r')
     hold on
-    plot(filtered_data.TestWTPost.Time,filtered_data.TestWTPost.DirectionNacelle,'ob')
+    plot(filtered_data.TestWTPost.Time, filtered_data.TestWTPost.DirectionNacelle,'ob')
     hold off
     grid minor
     ylabel 'Dir Nacelle'
@@ -690,6 +690,6 @@ function test = plot200(data,filtered_data)
 
     linkaxes([ax3 ax4 ax7 ax8 ax11 ax12 ax15 ax16],'x')
 
-    test=1;
+    test = 1;
 end
 

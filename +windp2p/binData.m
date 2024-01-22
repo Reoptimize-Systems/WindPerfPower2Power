@@ -1,4 +1,4 @@
-function binData (data)
+function binData(data)
 
 
 % power-to-power relation is dependent on wind direction and wind speed

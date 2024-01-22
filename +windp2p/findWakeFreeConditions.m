@@ -108,7 +108,7 @@ function a = findWakeFreeConditions(Data, varargin)
     
     WindDirectionBins = linspace(0, 360, 720 / (options.WindDirectionBinSize * 2) + 1);
     
-    % Bins = discretize(WindDirectionData,WindDirectionBins);
+    % Bins = discretize(WindDirectionData, WindDirectionBins);
 
 
 end
