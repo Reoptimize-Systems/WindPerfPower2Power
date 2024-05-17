@@ -5,6 +5,13 @@
 
 clc
 
+%% Set up folder 
+
+% Locate Main folder
+main_folder = fullfile (p2p_git_dir ());
+addpath(genpath(main_folder));
+cd ( main_folder );
+
 %% Data selection (internal function used to protect sensitive IP)
 
 clear data_info
@@ -17,19 +24,19 @@ clear data_info
 % SELECT_DATA = 'WF3';
 SELECT_DATA = 'WF4';
 
-folder_data_linking = fullfile (nextcloud_dir,'REOS-SHARED','Projects','INTERNAL--Power_to_Power_Comparison','MATLAB_code');
+folder_data_linking = fullfile (reos_shared_nextcloud_dir,'Projects','INTERNAL--Power_to_Power_Comparison','MATLAB_code');
 addpath(folder_data_linking)
 
 row_set=13; % see inside function for more information. not applicable to all WFs
 [data_info] = FCN_P2P_init(SELECT_DATA,'row_set',row_set); 
 
-clear Prev_calculated__Average_error_sum
+% clear Prev_calculated__Average_error_sum
 Combinations=[];
 IDX=0;
 
 %% FOR LOOPING. Select n, which determines which turbine pairs of "row_set" is being investigated
 
-for n= 1:50%[1 16 21 22 35]      %[16 21 22 35]%1:50%1:length(data_info.All_combinations)
+for n= 5:50%[1 16 21 22 35]      %[16 21 22 35]%1:50%1:length(data_info.All_combinations)
 %% Load data (internal function used to protect sensitive IP)
 
     % close all
@@ -608,9 +615,10 @@ end
 % saveas(figure(7),Fig_Sliding_Mean_name,'jpg')
 % saveas(figure(7),Fig_Sliding_Mean_name,'fig')
 
-Fig_Sliding_Mean_singular_name = "Sonnedix_Sliding_Mean_singular_S"+TestWT_S_No+"_and_S"+ControlWT_S_No;
-saveas(figure(77),Fig_Sliding_Mean_singular_name,'jpg')
-saveas(figure(77),Fig_Sliding_Mean_singular_name,'fig')
+% fname = fullfile (reos_shared_nextcloud_dir(),'Projects', 'Sonnedix--El-Arrayan', 'reporting_to_client','figures', 'Final figures histograms and sliding window','All 2023');
+% Fig_Sliding_Mean_singular_name = "Sonnedix_Sliding_Mean_singular_S"+TestWT_S_No+"_and_S"+ControlWT_S_No;
+% saveas(figure(77),fullfile(fname,Fig_Sliding_Mean_singular_name),'jpg')
+% saveas(figure(77),fullfile(fname,Fig_Sliding_Mean_singular_name),'fig')
 
 % Fig_Histogram_mono_name = "Sonnedix_Mono_Histogram_S"+TestWT_S_No+"_from_Jan_2023";
 % saveas(figure(11),Fig_Histogram_mono_name,'jpg')
