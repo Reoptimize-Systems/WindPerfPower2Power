@@ -36,7 +36,7 @@ IDX=0;
 
 %% FOR LOOPING. Select n, which determines which turbine pairs of "row_set" is being investigated
 
-for n= 5%:50%[1 16 21 22 35]      %[16 21 22 35]%1:50%1:length(data_info.All_combinations)
+for n= 47%:50%[1 16 21 22 35]      %[16 21 22 35]%1:50%1:length(data_info.All_combinations)
 %% Load data (internal function used to protect sensitive IP)
 
     % close all
@@ -44,10 +44,10 @@ for n= 5%:50%[1 16 21 22 35]      %[16 21 22 35]%1:50%1:length(data_info.All_com
 IDX=IDX+1;
 % % % n and IDX required for WF4
 
-[data,base_kW,ControlWT_S_No,TestWT_S_No] = FCN_load_data(SELECT_DATA,'n',n,'IDX',IDX,'data_info',data_info);
+[data,base_kW,ControlWT_No,TestWT_No] = FCN_load_data(SELECT_DATA,'n',n,'IDX',IDX,'data_info',data_info);
 
-Combinations{IDX,1}=ControlWT_S_No;
-Combinations{IDX,2}=TestWT_S_No;
+Combinations{IDX,1}=ControlWT_No;
+Combinations{IDX,2}=TestWT_No;
 
 %% Plot input data
 
@@ -185,7 +185,7 @@ range              = 360;
 % grid minor
 % xlabel 'Nacelle Position [{\circ}]'
 % ylabel 'Count'
-% title(sprintf('Turbine A (S%d)', TestWT_S_No)) % sgtitle 'Nacelle Position between two WTs'
+% title(sprintf('Turbine A (S%d)', TestWT_No)) % sgtitle 'Nacelle Position between two WTs'
 % ax2=subplot(1,2,2);
 % histogram(filtered_data_new.ControlWTPre.DirectionNacelle,[0:degree_sep_per_bin:range])
 % grid on
@@ -193,8 +193,8 @@ range              = 360;
 % xlabel 'Nacelle Position [{\circ}]'
 % ylabel 'Count'
 % % ylim([0 3500])
-% title(sprintf('Turbine B (S%d)', ControlWT_S_No)) % sgtitle 'Nacelle Position between two WTs'
-% sgtitle(sprintf('Uncorrected Nacelle Position Turbine A (S%d) and Turbine B (S%d)', TestWT_S_No, ControlWT_S_No)) 
+% title(sprintf('Turbine B (S%d)', ControlWT_No)) % sgtitle 'Nacelle Position between two WTs'
+% sgtitle(sprintf('Uncorrected Nacelle Position Turbine A (S%d) and Turbine B (S%d)', TestWT_No, ControlWT_No)) 
 % linkaxes([ax1 ax2],'x')
 % xlim([0 360])
 % % 
@@ -210,7 +210,7 @@ range              = 360;
 % grid minor
 % xlabel 'Nacelle Position [{\circ}]'
 % ylabel 'Count'
-% % title(sprintf('Turbine A (S%d)', TestWT_S_No)) % sgtitle 'Nacelle Position between two WTs'
+% % title(sprintf('Turbine A (S%d)', TestWT_No)) % sgtitle 'Nacelle Position between two WTs'
 % % 
 % x0=1700;
 % y0=-300;
@@ -259,7 +259,7 @@ Average_error_sum_new=mean(Average_error_sum_new);
 % grid minor
 % xlabel 'Date Time'
 % ylabel 'Instantaneous Nacelle Position [\circ]'
-% title(sprintf('Nacelle Position for Turbine A (S%d) and Turbine B (S%d)', TestWT_S_No, ControlWT_S_No)) % sgtitle 'Nacelle Position between two WTs'
+% title(sprintf('Nacelle Position for Turbine A (S%d) and Turbine B (S%d)', TestWT_No, ControlWT_No)) % sgtitle 'Nacelle Position between two WTs'
 % legend 'Turbine A' 'Turbine B'
 % %
 % ax2=subplot(3,1,2);
@@ -272,7 +272,7 @@ Average_error_sum_new=mean(Average_error_sum_new);
 % xlim([DateTimeTestWTPreNew(1) DateTimeTestWTPreNew(end)])
 % xlabel 'DateTime'
 % ylabel 'Nacelle Position [\circ]'
-% sgtitle(sprintf('Sliding Mean Nacelle Position for Turbine A (S%d) and Turbine B (S%d)', TestWT_S_No, ControlWT_S_No)) % sgtitle 'Nacelle Position between two WTs'
+% sgtitle(sprintf('Sliding Mean Nacelle Position for Turbine A (S%d) and Turbine B (S%d)', TestWT_No, ControlWT_No)) % sgtitle 'Nacelle Position between two WTs'
 % %
 % ax3=subplot(3,1,3);
 % plot(DateTimeTestWTPreNew,(New_Direction_TestWT-New_Direction_ControlWT),'.')
@@ -293,9 +293,9 @@ grid minor
 xlim([DateTimeTestWTPreNew(1) DateTimeTestWTPreNew(end)])
 xlabel 'DateTime'
 ylabel 'Nacelle Position [\circ]'
-% % % sgtitle(sprintf('Sliding Window Average Nacelle Position for Turbine (S%d) and Turbine (S%d)', TestWT_S_No, ControlWT_S_No)) % sgtitle 'Nacelle Position between two WTs'
-Legend{1} = ['Turbine S' num2str(TestWT_S_No)];
-Legend{2} = ['Turbine S' num2str(ControlWT_S_No)];
+% % % sgtitle(sprintf('Sliding Window Average Nacelle Position for Turbine (S%d) and Turbine (S%d)', TestWT_No, ControlWT_No)) % sgtitle 'Nacelle Position between two WTs'
+Legend{1} = ['Turbine S' num2str(TestWT_No)];
+Legend{2} = ['Turbine S' num2str(ControlWT_No)];
 legend(Legend)
 % % % Figure sizing
 x0=2300;
@@ -381,7 +381,7 @@ New_shifted_NacDir_column1 = wrapTo360(Table_NacDir.NacDir_column1_TestWTPre - A
 % % ylabel '\DeltaPosition = Error [{\circ}]'
 % % xlim([0 length(Average_error)])
 % % ylim([min((Average_error_sum-80),0) 180])
-% sgtitle(sprintf('Nacelle Position for Turbine A (S%d) and Turbine B (S%d)', TestWT_S_No, ControlWT_S_No)) % sgtitle 'Nacelle Position between two WTs'
+% sgtitle(sprintf('Nacelle Position for Turbine A (S%d) and Turbine B (S%d)', TestWT_No, ControlWT_No)) % sgtitle 'Nacelle Position between two WTs'
 % % % 
 % % % x0=1550;
 % % % y0=300;
@@ -464,7 +464,7 @@ end
 % xlabel 'Nacelle Position Turbine A [{\circ}]' % 'Nacelle Pos Test WT [{\circ}]'
 % xlim([0 360])
 % % sgtitle 'Northing with filtered data'
-% sgtitle(sprintf('Northing of Turbine A (S%d) and Turbine B (S%d)', TestWT_S_No, ControlWT_S_No)) 
+% sgtitle(sprintf('Northing of Turbine A (S%d) and Turbine B (S%d)', TestWT_No, ControlWT_No)) 
 % % % % Figure sizing
 % x0=2300;
 % y0=300;
@@ -499,7 +499,7 @@ end
 % grid minor
 % legend 'Turbine A' 'Turbine B' %'location' 'northoutside' 'Orientation' 'horizontal'
 % xlim([0 360])
-% % sgtitle(sprintf('Power and Wind Speed of Turbine A (S%d) and Turbine B (S%d)', TestWT_S_No, ControlWT_S_No)) 
+% % sgtitle(sprintf('Power and Wind Speed of Turbine A (S%d) and Turbine B (S%d)', TestWT_No, ControlWT_No)) 
 % % ylim([-0.5 14])
 % x0=2450;
 % y0=-300;
@@ -532,7 +532,7 @@ end
 % grid minor
 % xlim([0 360])
 % title 'Whole dataset'
-% sgtitle(sprintf('Power of Turbine A (S%d) and Turbine B (S%d)', TestWT_S_No, ControlWT_S_No)) 
+% sgtitle(sprintf('Power of Turbine A (S%d) and Turbine B (S%d)', TestWT_No, ControlWT_No)) 
 % % ylim([-0.5 14])
 % % % % Figure sizing
 % x0=2800;
@@ -578,7 +578,7 @@ end
 % grid minor
 % xlim([0 360])
 % title 'Turbine B'
-% sgtitle(sprintf('Density plots for Power & Wind Speed of Turbine A (S%d) and Turbine B (S%d)', TestWT_S_No, ControlWT_S_No)) 
+% sgtitle(sprintf('Density plots for Power & Wind Speed of Turbine A (S%d) and Turbine B (S%d)', TestWT_No, ControlWT_No)) 
 % % ylim([-0.5 14])
 % % % % Figure sizing
 % x0=2800;
@@ -591,36 +591,36 @@ end
 %% Uncomment if saving figures (make sure you're in the right folder!)
 
 % % % Saving Figures
-% Fig_Histogram_name = "Sonnedix_Histogram_S"+TestWT_S_No+"_and_S"+ControlWT_S_No+"from_Jan_2023";
+% Fig_Histogram_name = "Sonnedix_Histogram_S"+TestWT_No+"_and_S"+ControlWT_No+"from_Jan_2023";
 % saveas(figure(1),Fig_Histogram_name,'jpg')
 % saveas(figure(1),Fig_Histogram_name,'fig')
 % 
-% Fig_Error_name = "Sonnedix_NacError_S"+TestWT_S_No+"_and_S"+ControlWT_S_No+"from_Jan_2023";
+% Fig_Error_name = "Sonnedix_NacError_S"+TestWT_No+"_and_S"+ControlWT_No+"from_Jan_2023";
 % saveas(figure(2),Fig_Error_name,'jpg')
 % saveas(figure(2),Fig_Error_name,'fig')
 % 
-% Fig_Northing_name = "Sonnedix_Northing_S"+TestWT_S_No+"_and_S"+ControlWT_S_No;
+% Fig_Northing_name = "Sonnedix_Northing_S"+TestWT_No+"_and_S"+ControlWT_No;
 % saveas(figure(4),Fig_Northing_name,'jpg')
 % saveas(figure(4),Fig_Northing_name,'fig')
 % 
-% Fig_Pow_WindSp_name = "Sonnedix_Power_and_Wind_Speed_S"+TestWT_S_No+"_and_S"+ControlWT_S_No;
+% Fig_Pow_WindSp_name = "Sonnedix_Power_and_Wind_Speed_S"+TestWT_No+"_and_S"+ControlWT_No;
 % saveas(figure(5),Fig_Pow_WindSp_name,'jpg')
 % saveas(figure(5),Fig_Pow_WindSp_name,'fig')
 % 
-% Fig_Density_name = "Sonnedix_Density_Plots_S"+TestWT_S_No+"_and_S"+ControlWT_S_No;
+% Fig_Density_name = "Sonnedix_Density_Plots_S"+TestWT_No+"_and_S"+ControlWT_No;
 % saveas(figure(6),Fig_Density_name,'jpg')
 % saveas(figure(6),Fig_Density_name,'fig')
 % 
-% Fig_Sliding_Mean_name = "Sonnedix_Sliding_Mean_S"+TestWT_S_No+"_and_S"+ControlWT_S_No;
+% Fig_Sliding_Mean_name = "Sonnedix_Sliding_Mean_S"+TestWT_No+"_and_S"+ControlWT_No;
 % saveas(figure(7),Fig_Sliding_Mean_name,'jpg')
 % saveas(figure(7),Fig_Sliding_Mean_name,'fig')
 
 % fname = fullfile (reos_shared_nextcloud_dir(),'Projects', 'Sonnedix--El-Arrayan', 'reporting_to_client','figures', 'Final figures histograms and sliding window','All 2023');
-% Fig_Sliding_Mean_singular_name = "Sonnedix_Sliding_Mean_singular_S"+TestWT_S_No+"_and_S"+ControlWT_S_No;
+% Fig_Sliding_Mean_singular_name = "Sonnedix_Sliding_Mean_singular_S"+TestWT_No+"_and_S"+ControlWT_No;
 % saveas(figure(77),fullfile(fname,Fig_Sliding_Mean_singular_name),'jpg')
 % saveas(figure(77),fullfile(fname,Fig_Sliding_Mean_singular_name),'fig')
 
-% Fig_Histogram_mono_name = "Sonnedix_Mono_Histogram_S"+TestWT_S_No+"_from_Jan_2023";
+% Fig_Histogram_mono_name = "Sonnedix_Mono_Histogram_S"+TestWT_No+"_from_Jan_2023";
 % saveas(figure(11),Fig_Histogram_mono_name,'jpg')
 % saveas(figure(11),Fig_Histogram_mono_name,'fig')
 
@@ -670,7 +670,7 @@ PlossControlWT=(1-cos(deg2rad(Average_difference_between_NacPos_and_WindDir_for_
 
 Prev_calculated__Average_error_sum(IDX)=wrapTo180(Average_error_sum);
 
-% sprintf('Turbine A = (S%d), Turbine B = (S%d), loop %d of %d', TestWT_S_No, ControlWT_S_No,IDX,length(data_info.All_combinations))
+% sprintf('Turbine A = (S%d), Turbine B = (S%d), loop %d of %d', TestWT_No, ControlWT_No,IDX,length(data_info.All_combinations))
 
 end
 
@@ -693,7 +693,7 @@ Error_matrix = Prev_calculated__Average_error_sum';
 
 % clc
 
-% sprintf('TestWT = (S%d), ControlWT = (S%d)', TestWT_S_No, ControlWT_S_No)
+% sprintf('TestWT = (S%d), ControlWT = (S%d)', TestWT_No, ControlWT_No)
 
 degree_separation_per_bin = 5;% degrees
 No_threshold_direction = 360/degree_separation_per_bin+1;
